@@ -23,35 +23,19 @@
 		    });  
 		});
 	  
-	  /* sidebar */
-	  	function w3_open() {
-		    document.getElementById("mySidebar").style.display = "block";
-		}
-		function w3_close() {
-		    document.getElementById("mySidebar").style.display = "none";
-		}
 </script>
-	  </script>
+
 
 <style>
   
   body {
     margin: 40px 10px;
-    padding: 50;
+    padding: 10;
     font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
     font-size: 14px;
   }
 
-  #navigation{
-  	width: 60%;
-  	margin-left: 20%;
-  	margin-right: 20%;
-  }	
- /*  #body{
-  	margin-left: 20%;
-  	margin-right: 20%;
-  } */
-  
+ 
 </style>
 </head>
 
@@ -59,48 +43,37 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <body>
-	<!-- home logo top right -->
-		<!-- <a href="/innerpeace_aaa/mainhome/home">
-		<i id="home" class="material-icons" style="font-size:36px">home</i>
-		</a> -->
-	<!-- Logout logo top right -->
-	
-		<div class="w3-right">
-		<a href="/innerpeace_aaa/member/logout">
-		<i id="logout" class="material-icons" style="font-size:36px; ">power_settings_new</i>
-		</a></div>
-	 
-
-		
-	
-	<!-- Sidebar -->
-		<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
-		  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
-		    <p><div class="w3-container">
-		    	<h5 class="w3-center">WELCOME</h5>
-		  	</div></p>
-		    <p>
-		    <a href="/innerpeace_aaa/doc_find/map.jsp" class="w3-bar-item w3-button">병원/의료진 찾기</a>
-		    <a href="/innerpeace_aaa/reservation/reservation.jsp" class="w3-bar-item w3-button">진료예약하기</a>
-		    <a href="#" class="w3-bar-item w3-button">예약관리</a>
-		    <a href="/innerpeace_aaa/videochat/video.html" class="w3-bar-item w3-button">원격진료</a>
-		    <a href="#" class="w3-bar-item w3-button">진료기록</a>
-		    <a href="#" class="w3-bar-item w3-button">회원정보</a>
-			</p>
+	<!-- Navbar (sit on top) -->
+		<div class="w3-top" style="left: 0px;">
+		  <div class="w3-bar w3-white w3-padding w3-card" ><!-- style="letter-spacing:4px;" -->
+		    <a href="/innerpeace_aaa/member/home" class="w3-bar-item w3-button">Welcome ${name}</a>
+		    <!-- Right-sided navbar links. Hide them on small screens -->
+		    <div class="w3-right w3-hide-small">
+		      <a href="/innerpeace_aaa/doc_find/map.jsp" class="w3-bar-item w3-button">병원/의료진 찾기</a>
+		      <a href="/innerpeace_aaa/reservation/reservation.jsp" class="w3-bar-item w3-button">진료예약</a>
+		      <a href="/innerpeace_aaa/videochat/video.html" class="w3-bar-item w3-button">원격진료</a>	      
+			      <div class="w3-dropdown-hover">
+				   <button class="w3-button w3-black">MY PAGE</button>
+				   <div class="w3-dropdown-content w3-bar-block w3-border">
+				     <a href="#" class="w3-bar-item w3-button">예약관리</a>
+				     <a href="#" class="w3-bar-item w3-button">진료기록</a>
+				     <a href="#" class="w3-bar-item w3-button">회원정보수정</a>
+				   </div>
+				 </div>
+<!-- 		      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+ -->		      <a href="/innerpeace_aaa/member/logout">
+				<i id="logout" class="material-icons" style="font-size:36px; ">power_settings_new</i>
+			  </a>
+		    </div>
+		  </div>
 		</div>
 		
-		<!-- Page Content -->
-		<div class="w3-white w3-left" >
-		  <a onclick="w3_open()" class="w3-bar-item w3-large w3-white"><i class="fa fa-reorder" style="font-size:36px;"></i></a>
-		  
-		</div>
 		
 	<!-- body board -->
 	<center>
-	<form class="w3-container w3-card-4 w3-white w3-text-black w3-margin" style="height: 110%;width:40%; ">
-		<div class="reservation_form">
-	<form action="rsvpPro.jsp" method="post">
-	
+	<form class="w3-container w3-card-4 w3-white w3-text-black" action="rsvpPro.jsp" method="post"
+	style="height: 1050px; width:50%; margin-top: 70px;">
+		<div class="reservation_form" style="height: 100%;">	
 		<div><br>
 			<label>이름</label><span></span>
 			<input class="w3-input w3-hover-grey" style="width: 50%;"type="text" name="name" required="">
@@ -192,7 +165,6 @@
 			<span></span>
 		<br><br>
 		<input type="submit" name="submit" value="예약하기"></div>
-	</form>
 	</div>
 	</form>
 	</center>

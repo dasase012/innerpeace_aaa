@@ -81,7 +81,7 @@ public class MemberController extends Action{
 		System.out.println(info); 
 		JoinDBBean dbPro = JoinDBBean.getInstance();
 		dbPro.insertData(info);
-		res.sendRedirect("/innerpeace_aaa/index.html");
+		res.sendRedirect("/innerpeace_aaa/member/index");
 			
 		req.setAttribute("info", info);		
 		
@@ -191,5 +191,10 @@ public class MemberController extends Action{
 	public String updateInfo(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
 			 return  " "; 
+			} 
+	
+	public String appointment(HttpServletRequest request,
+			 HttpServletResponse response)  throws Throwable { 
+			 return  "/reservation/reservation.jsp"; 
 			} 
 }
