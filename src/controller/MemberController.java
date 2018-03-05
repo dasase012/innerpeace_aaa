@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import com.sist.msk.Action;
 
+import member.ApptDBBean;
+import member.ApptDataBean;
 import member.JoinDBBean;
 import member.JoinDataBean;
 
@@ -193,8 +195,105 @@ public class MemberController extends Action{
 			 return  " "; 
 			} 
 	
-	public String appointment(HttpServletRequest request,
+	public String appt(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
-			 return  "/reservation/reservation.jsp"; 
-			} 
+		String id = request.getParameter("id");
+
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null || pageNum ==""){
+			pageNum="1";}
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		try{
+			JoinDBBean dbPro = JoinDBBean.getInstance();
+			JoinDataBean member = dbPro.getMember(id, "update");
+		
+			request.setAttribute("member", member);
+			request.setAttribute("pageNum", pageNum);
+			
+		}catch(Exception e){}	 
+		
+		return  "/appointment/appt.jsp"; 
+	}
+	
+	public String apptPro(HttpServletRequest req,
+			 HttpServletResponse res)  throws Throwable { 
+		
+		//consultation 테이블 데이터
+		 String boardid = req.getParameter("boardid");
+			if(boardid == null || boardid.equals("")) boardid = "1";
+		 String pageNum = req.getParameter("pageNum");
+		 	if(pageNum == null || pageNum ==""){
+		 		pageNum="1";}
+			
+		ApptDataBean records= new ApptDataBean();
+		if(req.getParameter("num")!=null && !req.getParameter("num").equals("")) {
+			records.setNum(Integer.parseInt(req.getParameter("num")));
+		}
+		records.setBoardid(req.getParameter("boardid"));
+		records.setPat_name(req.getParameter("pat_name"));
+		records.setPat_id(req.getParameter("pat_id"));
+		records.setTel1(req.getParameter("tel1"));
+		records.setTel2(req.getParameter("tel2"));
+		records.setEmail(req.getParameter("email"));
+		records.setGender(req.getParameter("gender"));
+		records.setBirthdate(req.getParameter("birthdate"));
+		records.setCon_past(req.getParameter("con_past"));
+		records.setCon_cat(req.getParameter("con_cat"));
+		records.setDoc(req.getParameter("doc"));
+		records.setAppt_date1(req.getParameter("appt_date1"));
+		records.setAppt_date2(req.getParameter("appt_date2"));
+		records.setMedication(req.getParameter("medication"));
+		records.setMed_name(req.getParameter("med_name"));
+		records.setText(req.getParameter("text"));
+		
+		
+		System.out.println(records); 
+		ApptDBBean dbPro = ApptDBBean.getInstance(); 
+		dbPro.insertData(records);
+		
+		req.setAttribute("pageNum", pageNum);
+		res.sendRedirect(req.getContextPath()+"/member/apptlist?pageNum="+pageNum+"&boardid="+boardid);
+						
+		return null;
+
+		}
+	public String apptlist(HttpServletRequest request,
+			 HttpServletResponse response)  throws Throwable { 
+		 
+		  String boardid = request.getParameter("boardid"); //어떤 게시판을 보여줄래? ==> boardid 파라미터로 넘김
+			if(boardid==null || boardid.equals("")) boardid="1";
+			int pageSize = 5;
+		   SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		   String pageNum = request.getParameter("pageNum");
+		   if(pageNum==null || pageNum =="") {pageNum = "1";}
+		   int currentPage = Integer.parseInt(pageNum);
+		   int startRow = (currentPage-1)*pageSize+1;
+		   int endRow = currentPage*pageSize;
+		   int count = 0;
+		   int num = 0;
+		   List apptList = null;
+		   ApptDBBean dbPro = ApptDBBean.getInstance();
+		   count = dbPro.getApptCount();
+		   if(count>0){
+			apptList = dbPro.getRecords(startRow, endRow, boardid);
+		   }
+		  	num = count-(currentPage-1)*pageSize;
+		   
+		  	int bottomLine=3;
+		  	int pageCount = count/pageSize + (count%pageSize == 0?0:1);
+			int startPage = 1 + (currentPage-1)/bottomLine * bottomLine;
+			int endPage = startPage+bottomLine-1;
+			if(endPage>pageCount) endPage = pageCount;
+
+			request.setAttribute("boardid", boardid);
+			request.setAttribute("count", count);
+			request.setAttribute("apptList", apptList);
+			request.setAttribute("currentPage", currentPage);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("bottomLine", bottomLine);
+			request.setAttribute("endPage", endPage);
+			request.setAttribute("num", num);
+		
+		return  "/appointment/list.jsp"; 
+	}
 }

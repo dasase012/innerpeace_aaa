@@ -17,6 +17,9 @@
 	  $( function() {
 		$( "#datepicker2" ).datepicker();
 	  } );
+	  $( function() {
+		$( "#datepicker3" ).datepicker();
+	  } );
 	  $(function(){
 		$('input.timepicker').timepicker({
 		    	scrollbar: true
@@ -50,12 +53,12 @@
 		    <!-- Right-sided navbar links. Hide them on small screens -->
 		    <div class="w3-right w3-hide-small">
 		      <a href="/innerpeace_aaa/doc_find/map.jsp" class="w3-bar-item w3-button">병원/의료진 찾기</a>
-		      <a href="/innerpeace_aaa/reservation/reservation.jsp" class="w3-bar-item w3-button">진료예약</a>
+		      <a href="/innerpeace_aaa/appointment/appt.jsp" class="w3-bar-item w3-button">진료예약</a>
 		      <a href="/innerpeace_aaa/videochat/video.html" class="w3-bar-item w3-button">원격진료</a>	      
 			      <div class="w3-dropdown-hover">
 				   <button class="w3-button w3-black">MY PAGE</button>
 				   <div class="w3-dropdown-content w3-bar-block w3-border">
-				     <a href="#" class="w3-bar-item w3-button">예약관리</a>
+				     <a href="/innerpeace_aaa/member/apptlist" class="w3-bar-item w3-button">예약관리</a>
 				     <a href="#" class="w3-bar-item w3-button">진료기록</a>
 				     <a href="#" class="w3-bar-item w3-button">회원정보수정</a>
 				   </div>
@@ -71,20 +74,22 @@
 		
 	<!-- body board -->
 	<center>
-	<form class="w3-container w3-card-4 w3-white w3-text-black" action="rsvpPro.jsp" method="post"
+	<form class="w3-container w3-card-4 w3-white w3-text-black" action="/innerpeace_aaa/member/apptPro" method="post"
 	style="height: 1050px; width:50%; margin-top: 70px;">
+		<input type="hidden" name="num" value="${num }">
+		<input type="hidden" name="boardid" value="${ boardid }"> <!-- form>hidden으로 내용 저장을 해야함 -->
 		<div class="reservation_form" style="height: 100%;">	
 		<div><br>
-			<label>이름</label><span></span>
-			<input class="w3-input w3-hover-grey" style="width: 50%;"type="text" name="name" required="">
+			<label>이름 </label><span></span>
+			<input class="w3-input w3-hover-grey" style="width: 50%;"type="text" name="pat_name" required="">
 		</div>
 		<div>
 			<label>아이디</label><span></span>
-			<input class="w3-input w3-hover-grey" style="width: 50%;"type="text" name="id" required="">
+			<input class="w3-input w3-hover-grey" style="width: 50%;"type="text" name="pat_id" required="">
 		</div>
 		<div>
 			<label>기본 연락처</label><span></span>
-			<input class="w3-input w3-hover-grey" style="width: 50%;"type="text" name="tel" required="">			
+			<input class="w3-input w3-hover-grey" style="width: 50%;"type="text" name="tel1" required="">			
 		</div>
 		<div>
 			<label>연락처 2</label><span></span>
@@ -100,53 +105,58 @@
 			<input type="radio" name="gender" value="female">여
 		</div>
 		<div>
+			<label>생년월일<br><span></span></label>
+			<input class="date3" name="birthdate" type="text" required="required" value="MM/DD/YYYY">
+		</div><br>
+		
+		<div>
+			<label>진료이력 </label><span></span>
+			<input type="radio" name="con_past" value="초진">초진
+			<input type="radio" name="con_past" value="재진">재진
+		</div>
+		<div>
 	
-			<select id="category1" class="w3-select" name="option" style="width: 50%;" required="">
+			<select id="category1" class="w3-select" name="con_cat" style="width: 50%;" >
 				<option value="">상담 받고자 하는 과목*</option>
 				<option value=""></option>
-				<option value="">----성인정신건강 전반----</option>
-				<option value="">우울증</option>
-				<option value="">분노조절,스트레스</option>
-				<option value="">불면증</option>
-				<option value="">대인공포증</option>
-				<option value="">섭식장애(거식,폭식)</option>
-				<option value="">중독(게임,성생활,술)</option>
-				<option value="">불안장애,강박증</option>
-				<option value="">외상 후 스트레스 장애</option>
-				<option value="">부부갈등,커플 카운셀링</option>
+				<option value="성인전반">----성인정신건강 전반----</option>
+				<option value="우울증">우울증</option>
+				<option value="분노조절,스트레스">분노조절,스트레스</option>
+				<option value="불면증">불면증</option>
+				<option value="대인공포증">대인공포증</option>
+				<option value="섭식장애">섭식장애(거식,폭식)</option>
+				<option value="중독">중독(게임,성생활,술)</option>
+				<option value="불안장애,강박증">불안장애,강박증</option>
+				<option value="PTSD">외상 후 스트레스 장애</option>
+				<option value="부부갈등,커플 카운셀링">부부갈등,커플 카운셀링</option>
 				<option value=""></option>
-				<option value=""></option>
-				<option value="">----소아청소년 정신건강 전반----</option>
-				<option value="">주의력 결핍 과잉 행동장애(ADHD)</option>
-				<option value="">틱장애</option>
-				<option value="">학습장애,적성 및 진로지도</option>
-				<option value="">정서장애</option>
-				<option value="">청소년 인터넷 중독</option>
-				<option value="">도벽과 거짓말</option>
-				<option value="">성폭력 피해 후유증,왕따 후유증</option>
+				<option value="소아청소년 전반">----소아청소년 정신건강 전반----</option>
+				<option value="ADHD">주의력 결핍 과잉 행동장애(ADHD)</option>
+				<option value="틱">틱장애</option>
+				<option value="학습장애,적성 및 진로">학습장애,적성 및 진로지도</option>
+				<option value="청소년 인터넷 중독">청소년 인터넷 중독</option>
+				<option value="성폭력,왕따 후유증">성폭력 피해 후유증,왕따 후유증</option>
 			</select>
 			<span></span>
 		</div>
 		<div>
-			<select id="category2" class="w3-select" name="option" style="width: 50%;" required="">
+			<select id="category2" class="w3-select" name="doc" style="width: 50%;" >
 				<option value="">상담 받고자 하는 선생님*</option>
-				<option value="">상담자A</option>
-				<option value="">상담자B</option>
-				<%-- <option value=""><%=getget%></option>
-				<option value=""><%=getget%></option> --%>
+				<option value="docA">상담자A</option>
+				<option value="docB">상담자B</option>
 			</select>
 			<span></span>
 		</div><br>
 		<div>
 			<label>원하시는 진료 일시를 선택해 주세요.<br><span></span></label>
-			<input class="date1" id="datepicker" name="Text" type="text" value="MM/DD/YYYY" 
-			onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" required="">
+			<input class="date1" id="datepicker" name="appt_date1" type="text" required="required" value="MM/DD/YYYY" 
+			onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" >
 			<input class="timepicker timepicker-with-dropdown text-center" />
 		</div><br>
 		<div>
 			<label>차선으로 가능한 진료 일시를 선택해 주세요.<br><span></span></label>
-			<input class="date2" id="datepicker2" name="Text" type="text" value="MM/DD/YYYY" 
-			onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" required="">
+			<input class="date2" id="datepicker2" name="appt_date2" type="text" required="required" value="MM/DD/YYYY" 
+			onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" >
 			<input class="timepicker timepicker-with-dropdown text-center"/>
 		</div><br>		
 		<div>

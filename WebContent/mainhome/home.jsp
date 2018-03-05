@@ -137,16 +137,16 @@
 	<!-- Navbar (sit on top) -->
 		<div class="w3-top" style="left: 0px;">
 		  <div class="w3-bar w3-white w3-padding w3-card" ><!-- style="letter-spacing:4px;" -->
-		    <a href="/innerpeace_aaa/member/home" class="w3-bar-item w3-button">Welcome ${name}</a>
+		    <a href="home" class="w3-bar-item w3-button">Welcome ${name}</a>
 		    <!-- Right-sided navbar links. Hide them on small screens -->
 		    <div class="w3-right w3-hide-small">
 		      <a href="/innerpeace_aaa/doc_find/map.jsp" class="w3-bar-item w3-button">병원/의료진 찾기</a>
-		      <a href="/innerpeace_aaa/reservation/reservation.jsp" class="w3-bar-item w3-button">진료예약</a>
+		      <a href="/innerpeace_aaa/appointment/appt.jsp" class="w3-bar-item w3-button">진료예약</a>
 		      <a href="/innerpeace_aaa/videochat/video.html" class="w3-bar-item w3-button">원격진료</a>	      
 			      <div class="w3-dropdown-hover">
 				   <button class="w3-button w3-black">MY PAGE</button>
 				   <div class="w3-dropdown-content w3-bar-block w3-border">
-				     <a href="#" class="w3-bar-item w3-button">예약관리</a>
+				     <a href="apptlist" class="w3-bar-item w3-button">예약관리</a>
 				     <a href="#" class="w3-bar-item w3-button">진료기록</a>
 				     <a href="#" class="w3-bar-item w3-button">회원정보수정</a>
 				   </div>

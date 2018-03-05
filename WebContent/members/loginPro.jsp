@@ -22,16 +22,6 @@
 	      history.back();
 	     </script>
 	</c:if>
-	<%-- <c:if test="${id.equals("admin")}">
-  			  session.setAttribute("id",id);
-			  response.sendRedirect("/innerpeace_aaa/members/list?id="+${id});
-	 </c:if>
-	 <c:if test="${!id.equals("admin")}">
-		  session.setAttribute("id",id);
-		  session.setAttribute("name", name);	
-		  System.out.println(name); 
-		  
-		  response.sendRedirect("/innerpeace_aaa/mainhome/home?id="+${id});
-	   </c:if> --%>
+	
 </body>
 </html>
