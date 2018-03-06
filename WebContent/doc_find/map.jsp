@@ -324,5 +324,8 @@ function removeAllChildNods(el) {
     }
 }
 </script>
+
+		<!-- footer contact admin -->
+			<%@ include file="/mainhome/footer.jsp" %>
 </body>
 </html>

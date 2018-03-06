@@ -151,9 +151,10 @@
 		<br><br>
 		<input type="submit" name="submit" value="예약하기"></div>
 	</div></form>	
-	
-	
 	</center>
+	
+	<!-- footer contact admin -->
+	<%@ include file="/mainhome/footer.jsp" %>
 </body>
 </div>
 </html>

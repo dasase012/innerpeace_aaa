@@ -13,33 +13,9 @@
  
   body {
     margin: 40px 10px;
-    padding: 10;
+    padding: 0;
     font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
     font-size: 14px;
-  }
-  iframe{
-  	height: 70%; 
-  	width: 330;
-  	padding: 0;
-  	/* margin-top: 50px; */
-  	border: none;
-	margin-right: 50px;
-	margin-top: 20px;
-	margin-bottom: 30px;
-	
-	-moz-border-radius: 12px;
-	-webkit-border-radius: 12px;
-	border-radius: 12px;
-	
-	-moz-box-shadow: 4px 4px 14px #000;
-	-webkit-box-shadow: 4px 4px 14px #000;
-	box-shadow: 4px 4px 14px #000;
-	
-	-moz-transform:rotate(20deg);
-	-webkit-transform:rotate(20deg);
-	-o-transform:rotate(20deg);
-	-ms-transform:rotate(20deg);
-	filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=.2);
   }
 
 </style>
@@ -50,13 +26,45 @@
 	<!-- Navbar (sit on top) -->
 	<%@ include file="/mainhome/header.jsp" %>
 
-	<!-- jsoup -->
-	<%-- <%@ include file="/mainhome/jsoup.jsp" %> --%>
-	<iframe src="/innerpeace_aaa/mainhome/jsoup.jsp" class="w3-display-right" style="overflow: scroll;"></iframe>
-
+	<!-- First Grid: 기관찾기 & 예약하기 -->
+		<div class="w3-row" style="width: 60%; margin-top: 70px; margin-left: 20%; margin-right:20%;">
+		
+		  <div class="w3-half w3-light-grey w3-center" style="height:320px;">
+		    <div class="w3-padding-24">
+		    	<a href="/innerpeace_aaa/doc_find/map.jsp">
+		        <img src="/innerpeace_aaa/resources/map.png" class="w3-margin w3-circle" style="width:50%"></a>
+		      	<div>상담기관 찾기</div>
+		    </div>
+		  </div>
+		  
+		  <div class="w3-half w3-blue-grey w3-center" style="height:320px">
+		    <div class="w3-padding-24">
+		      <a href="/innerpeace_aaa/member/appt">
+		      <img src="/innerpeace_aaa/resources/appt.png" class="w3-margin w3-circle" style="width:50%"></a>
+		        <div>진료예약</div>
+		    </div>
+		  </div>
+		</div>
+		<!-- Second Grid: 원격진료 & Contact -->
+		<div class="w3-row" style="width: 60%; margin-left: 20%; margin-right:20%;">
+		  <div class="w3-half w3-dark-grey w3-container w3-center" style="height:320px">
+		    <div class="w3-padding-24">
+		     <a href="/innerpeace_aaa/videochat/video.jsp">
+		     <img src="/innerpeace_aaa/resources/videocall.png" class="w3-margin w3-circle" style="width:50%"></a>
+		      <div>원격진료</div>
+		    </div>
+		  </div>
+		  
+		  <div class="w3-half w3-teal w3-container" style="height:320px">
+		    <div class="w3-padding-32 w3-padding-large w3-center">
+		      <h1>Contact</h1><br/>
+		     <a href="mailto:dasase012@hotmail.com"><h3>admin@innerpeace.co.kr</h3></a>
+		        <br/><button type="button" class="w3-btn w3-light-grey">Send</button>
+		  </div>
+		</div>
 	
 	<!-- footer contact admin -->
-	<h6 class="w3-bottom" align="center">contact: admin@innerpeace.com</h6>
+	<%@ include file="/mainhome/footer.jsp" %>
 	
 </body>
 </html>

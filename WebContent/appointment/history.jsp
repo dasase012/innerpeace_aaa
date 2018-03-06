@@ -42,8 +42,8 @@
 		<td align="center" width="50">번호</td>
 		<td align="center" width="50">상담과목</td>
 		<td align="center" width="50">담당의료진</td>
-		<td align="center" width="100">진료예약일1</td>
-		<td align="center" width="100">진료예약일2</td>
+		<td align="center" width="100">진료일</td>
+		<!-- <td align="center" width="100">진료예약일2</td> -->
 		<td align="center" width="50">예약관리</td>
 	
 	<c:forEach var="records" items="${apptList}">
@@ -54,10 +54,10 @@
 			${member.id} --%>${records.con_cat}</td>
 			<td align="center" width="50">${records.doc}</td>
 			<td align="center" width="100">${records.appt_date1}</td>
-			<td align="center" width="100">${records.appt_date2}</td>
+			<%-- <td align="center" width="100">${records.appt_date2}</td> --%>
 			<td align="center" width="50">
-				<input type="button" value="예약취소" 
-			onclick="document.location.href='apptCancel.jpg'">
+				<!-- <input type="button" value="예약취소" 
+			onclick="document.location.href='apptCancel.jpg'"> -->
 			</td>
 			</tr><!-- </a> --></c:forEach>	</table> </c:if>
 
