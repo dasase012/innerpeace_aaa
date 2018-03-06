@@ -24,32 +24,12 @@ public class MemberController extends Action{
 	
 	public String index(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
-			 return  "/index.html"; 
+			 return  "/index.jsp"; 
 			} 
 	
 	public String loginForm(HttpServletRequest request,HttpServletResponse response)  throws Throwable { 		
 		return  "/members/loginForm.jsp"; 
 			}
-	
-	public String home(HttpServletRequest request,HttpServletResponse response)  throws Throwable { 
-		String id = request.getParameter("id");
-		
-		String pageNum = request.getParameter("pageNum");
-		if(pageNum == null || pageNum ==""){
-			pageNum="1";} 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-
-		try{
-			JoinDBBean dbPro = JoinDBBean.getInstance();
-			JoinDataBean member = dbPro.getMember(id, "content");
-			
-			request.setAttribute("member", member);
-			
-			
-		}catch(Exception e){}
-		
-		return  "/mainhome/home.jsp"; 
-	} 
 	
 	public String joinForm(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
@@ -90,8 +70,7 @@ public class MemberController extends Action{
 		return null;
 	}
 	
-	public String loginPro(HttpServletRequest request,
-			 HttpServletResponse response)  throws Throwable { 
+	public String loginPro(HttpServletRequest request,HttpServletResponse response)  throws Throwable { 
 		JoinDBBean dbPro = JoinDBBean.getInstance(); 
 		HttpSession session = request.getSession();
 	
@@ -114,19 +93,24 @@ public class MemberController extends Action{
   			
 		}else{
 			  session.setAttribute("id",id);
-			  session.setAttribute("name", name);	//name 저장 >> welcome 에 name을 넘겨줌
+			 // session.setAttribute("name", name);	//name 저장 >> welcome 에 name을 넘겨줌
 			  System.out.println(name); 
 			  
-			  return "/mainhome/home.jsp";
+			 response.sendRedirect("/innerpeace_aaa/member/home");
 	   }
 		return null;
 	} 
+	
+	public String home(HttpServletRequest request,HttpServletResponse response)  throws Throwable { 
+		
+		return  "/mainhome/home.jsp"; 
+	}
 	
 	public String logout(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
 			HttpSession session = request.getSession();
 			session.invalidate();
-			response.sendRedirect("/innerpeace_aaa/index.html");
+			response.sendRedirect("/innerpeace_aaa/member/index");
 			return  null; 
 	} 
 	
@@ -180,7 +164,7 @@ public class MemberController extends Action{
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 			try{
 				JoinDBBean dbPro = JoinDBBean.getInstance();
-				JoinDataBean member = dbPro.getMember(id, "update");
+				JoinDataBean member = dbPro.getMember(id);
 			
 				request.setAttribute("member", member);
 				request.setAttribute("pageNum", pageNum);
@@ -197,20 +181,17 @@ public class MemberController extends Action{
 	
 	public String appt(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
-		String id = request.getParameter("id");
-
-		String pageNum = request.getParameter("pageNum");
-		if(pageNum == null || pageNum ==""){
-			pageNum="1";}
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-		try{
-			JoinDBBean dbPro = JoinDBBean.getInstance();
-			JoinDataBean member = dbPro.getMember(id, "update");
-		
-			request.setAttribute("member", member);
-			request.setAttribute("pageNum", pageNum);
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("id");
+				try{
+				JoinDBBean dbPro = JoinDBBean.getInstance();
+				JoinDataBean member = dbPro.getMember(id);
+				
+				System.out.println(member);
+				request.setAttribute("member", member);
 			
-		}catch(Exception e){}	 
+				
+			}catch(Exception e){}
 		
 		return  "/appointment/appt.jsp"; 
 	}
@@ -229,14 +210,9 @@ public class MemberController extends Action{
 		if(req.getParameter("num")!=null && !req.getParameter("num").equals("")) {
 			records.setNum(Integer.parseInt(req.getParameter("num")));
 		}
+		records.setId(req.getParameter("id"));
 		records.setBoardid(req.getParameter("boardid"));
-		records.setPat_name(req.getParameter("pat_name"));
-		records.setPat_id(req.getParameter("pat_id"));
-		records.setTel1(req.getParameter("tel1"));
 		records.setTel2(req.getParameter("tel2"));
-		records.setEmail(req.getParameter("email"));
-		records.setGender(req.getParameter("gender"));
-		records.setBirthdate(req.getParameter("birthdate"));
 		records.setCon_past(req.getParameter("con_past"));
 		records.setCon_cat(req.getParameter("con_cat"));
 		records.setDoc(req.getParameter("doc"));
@@ -259,24 +235,31 @@ public class MemberController extends Action{
 		}
 	public String apptlist(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
-		 
-		  String boardid = request.getParameter("boardid"); //어떤 게시판을 보여줄래? ==> boardid 파라미터로 넘김
+			
+			HttpSession session = request.getSession(); 
+			String id = (String)session.getAttribute("id");
+			
+		  String boardid = request.getParameter("boardid"); 
 			if(boardid==null || boardid.equals("")) boardid="1";
 			int pageSize = 5;
-		   SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		   String pageNum = request.getParameter("pageNum");
 		   if(pageNum==null || pageNum =="") {pageNum = "1";}
-		   int currentPage = Integer.parseInt(pageNum);
+		     int currentPage = Integer.parseInt(pageNum);
+		   
 		   int startRow = (currentPage-1)*pageSize+1;
 		   int endRow = currentPage*pageSize;
 		   int count = 0;
 		   int num = 0;
 		   List apptList = null;
 		   ApptDBBean dbPro = ApptDBBean.getInstance();
-		   count = dbPro.getApptCount();
+		   count = dbPro.getApptCount(boardid);
+		   System.out.println(id+"==========================="+count);
 		   if(count>0){
-			apptList = dbPro.getRecords(startRow, endRow, boardid);
+			apptList = dbPro.getRecords(startRow, endRow, boardid, id);
 		   }
+		   System.out.println("================");
+		   System.out.println(apptList);
+		   System.out.println("================");
 		  	num = count-(currentPage-1)*pageSize;
 		   
 		  	int bottomLine=3;
@@ -284,8 +267,10 @@ public class MemberController extends Action{
 			int startPage = 1 + (currentPage-1)/bottomLine * bottomLine;
 			int endPage = startPage+bottomLine-1;
 			if(endPage>pageCount) endPage = pageCount;
-
+			
+			//request.setAttribute("id", id);
 			request.setAttribute("boardid", boardid);
+			//request.setAttribute("pageNum", pageNum);
 			request.setAttribute("count", count);
 			request.setAttribute("apptList", apptList);
 			request.setAttribute("currentPage", currentPage);
@@ -293,7 +278,11 @@ public class MemberController extends Action{
 			request.setAttribute("bottomLine", bottomLine);
 			request.setAttribute("endPage", endPage);
 			request.setAttribute("num", num);
-		
-		return  "/appointment/list.jsp"; 
+			
+		//	response.sendRedirect(request.getContextPath()+"/member/apptlist?id="+id+"&pageNum="+pageNum+"&boardid="+boardid);
+			
+		//	return null;
+			
+			return "/appointment/list.jsp";
 	}
 }

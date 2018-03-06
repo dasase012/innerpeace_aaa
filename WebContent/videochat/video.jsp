@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title>ì›ê²©ì§„ë£Œ</title>
+  <title>¿ø°ÝÁø·á</title>
   <meta charset="utf-8">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -43,7 +45,7 @@
    	<center>	
     <div class="row">
       <div class="col-md-12"><br><br>
-        <h1 class="page-header">ì›ê²©ì§„ë£Œë¥¼ ì‹œìž‘í•©ë‹ˆë‹¤.</h1>
+        <h1 class="page-header">¿ø°ÝÁø·á¸¦ ½ÃÀÛÇÕ´Ï´Ù.</h1>
       </div>
 
       <div class="col-md-6">
@@ -86,9 +88,9 @@
       </center>
   </div>
   
-<!-- ë‚˜ê°€ê¸° ë²„íŠ¼ -->
+<!-- ³ª°¡±â ¹öÆ° -->
 	<p><button class="w3-button w3-section w3-teal w3-ripple w3-display-middle" type="button" 
-			onclick="window.location.href='/innerpeace_aaa/member/home'"> ë‚˜ê°€ê¸° </button></p>
+			onclick="window.location.href='/innerpeace_aaa/member/home'"> ³ª°¡±â </button></p>
   
 
   <!--<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>-->

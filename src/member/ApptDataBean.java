@@ -2,14 +2,9 @@ package member;
 
 public class ApptDataBean {
 	private int num;
+	private String id;
 	private String boardid;
-	private String pat_name;
-	private String pat_id;
-	private String tel1;
 	private String tel2;
-	private String email;
-	private String gender;
-	private String birthdate;
 	private String con_past;
 	private String con_cat;
 	private String doc;
@@ -18,6 +13,7 @@ public class ApptDataBean {
 	private String medication;
 	private String med_name;
 	private String text;
+		
 	
 	public int getNum() {
 		return num;
@@ -25,53 +21,23 @@ public class ApptDataBean {
 	public void setNum(int num) {
 		this.num = num;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getBoardid() {
 		return boardid;
 	}
 	public void setBoardid(String boardid) {
 		this.boardid = boardid;
 	}
-	public String getPat_name() {
-		return pat_name;
-	}
-	public void setPat_name(String pat_name) {
-		this.pat_name = pat_name;
-	}
-	public String getPat_id() {
-		return pat_id;
-	}
-	public void setPat_id(String pat_id) {
-		this.pat_id = pat_id;
-	}
-	public String getTel1() {
-		return tel1;
-	}
-	public void setTel1(String tel1) {
-		this.tel1 = tel1;
-	}
 	public String getTel2() {
 		return tel2;
 	}
 	public void setTel2(String tel2) {
 		this.tel2 = tel2;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public String getBirthdate() {
-		return birthdate;
-	}
-	public void setBirthdate(String birthdate) {
-		this.birthdate = birthdate;
 	}
 	public String getCon_past() {
 		return con_past;
@@ -123,11 +89,10 @@ public class ApptDataBean {
 	}
 	@Override
 	public String toString() {
-		return "ApptDataBean [num=" + num + ", boardid=" + boardid + ", pat_name=" + pat_name + ", pat_id=" + pat_id
-				+ ", tel1=" + tel1 + ", tel2=" + tel2 + ", email=" + email + ", gender=" + gender + ", birthdate="
-				+ birthdate + ", con_past=" + con_past + ", con_cat=" + con_cat + ", doc=" + doc + ", appt_date1="
-				+ appt_date1 + ", appt_date2=" + appt_date2 + ", medication=" + medication + ", med_name=" + med_name
-				+ ", text=" + text + "]";
+		return "ApptDataBean [num=" + num + ", id=" + id + ", boardid=" + boardid + ", tel2=" + tel2 + ", con_past="
+				+ con_past + ", con_cat=" + con_cat + ", doc=" + doc + ", appt_date1=" + appt_date1 + ", appt_date2="
+				+ appt_date2 + ", medication=" + medication + ", med_name=" + med_name + ", text=" + text + "]";
 	}
-		
+	
+
 }

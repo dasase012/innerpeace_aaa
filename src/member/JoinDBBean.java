@@ -152,22 +152,22 @@ public class JoinDBBean {
 		}
 		
 		//getMember
-		public JoinDataBean getMember(String id, String chk) {
+		public JoinDataBean getMember(String id) {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			JoinDataBean members = null;
 			String sql="";
-			
+			System.out.println("++++++++++++++"+id);
 			try {
 				conn = getConnection();
 				
-				if(chk.equals("content")) {
+				/*if(chk.equals("content")) {
 				sql="update member where id = ? ";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, id);
 				pstmt.executeUpdate();
-				}
+				}*/
 				
 				sql="select * from member where id = ? ";
 				pstmt=conn.prepareStatement(sql);
@@ -189,6 +189,7 @@ public class JoinDBBean {
 					members.setPosition(rs.getString("position"));
 					members.setRegdate(rs.getTimestamp("regdate"));
 				}
+				System.out.println("++++++++++"+members);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {

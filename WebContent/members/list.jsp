@@ -7,6 +7,13 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <head><title>Insert title here</title></head>
 <body>
+
+<!-- Navbar (sit on top) -->
+	<%@ include file="/mainhome/header.jsp" %>
+
+
+
+
 	<p class="w3-left" style="padding-left: 30px"></p>
 <div class="w3-container">
 	<span class="w3-center w3-large">

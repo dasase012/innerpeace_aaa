@@ -22,7 +22,7 @@
 	<div class="w3-container w3-half w3-display-middle" style="width:30%;">
 	  <ul class="w3-ul w3-hover-shadow">
 	  <li class="w3-teal w3-xlarge w3-center w3-padding-32">Login</li>
-	<form class="w3-container w3-card-4 w3-white" action="/innerpeace_aaa/member/loginPro" method="post">
+	<form class="w3-container w3-card-4 w3-white" action="loginPro" method="post">
 	
 	<p>
 	<input class="w3-input" type="text" name="id" style="width:100%" required>
@@ -37,9 +37,6 @@
 	
 	<p class="w3-center">
 	<button class="w3-button w3-section w3-teal w3-ripple" type="submit"> Login </button>
-	
-	<!-- <button class="w3-button w3-section w3-teal w3-ripple" type="button" 
-			onclick="window.location.href='/innerpeace_aaa/member/joinForm'"> Sign-up </button> -->
 	
 	<button class="w3-button w3-section w3-teal w3-ripple" type="button" 
 			onclick="window.location.href='/innerpeace_aaa/member/index'"> Cancel </button></p>

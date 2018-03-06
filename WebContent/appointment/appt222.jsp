@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <html>
-<head><title>게시판</title>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<head>
+<meta charset="euc-kr" />
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -30,6 +27,8 @@
 		});
 	  
 </script>
+
+
 <style>
   
   body {
@@ -43,15 +42,11 @@
 </style>
 </head>
 
-
-<%-- <form method="post" name="updateform" action="updatePro" >
-<input type="hidden" name="id" value="${member.id}">
-<input type="hidden" name="pageNum" value="${pageNum}">
-<form class="w3-container w3-card-4 w3-white w3-text-black w3-margin" style="height: 100%;"> --%> 
-<div class="w3-row w3-section">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <body>
-
-<!-- Navbar (sit on top) -->
+	<!-- Navbar (sit on top) -->
 		<div class="w3-top" style="left: 0px;">
 		  <div class="w3-bar w3-white w3-padding w3-card" ><!-- style="letter-spacing:4px;" -->
 		    <a href="/innerpeace_aaa/member/home" class="w3-bar-item w3-button">Welcome ${name}</a>
@@ -79,52 +74,43 @@
 		
 	<!-- body board -->
 	<center>
-<div class="container" id="info">
-	<table class="w3-table-all w3-bordered w3-centered" style="width:50%;">
-	<tr height="30">
-		<td width="125" align="center"><b>아이디 : </b></td>
-		<td width="125" align="center">${member.id}</td>
-		<td width="125" align="center"><b>이름 : </b></td>
-		<td width="125" align="center">${member.name}</td>
-	</tr>
-	<tr height="30">			
-		<td width="125" align="center"><b>성별 : </b></td>
-		<td width="125" >${member.gender}</td>
-		<td width="125" align="center"><b>생년월일 : </b></td>
-		<td width="125" align="center">${member.birthdate}</td>
-	</tr><tr height="30">		
-		<td width="125"><b>기본연락처 : </b></td>
-		<td width="125">${member.tel}</td>
-		<td width="125"><b>이메일 : </b></td>
-		<td width="125">${member.email}</td>
- 	</tr><tr height="30">
-		<td width="125"><b>과거 진료경험 여부 :  </b></td>
-		<td width="125" align="center">${member.con_past}</td>
-			<td width="125"><b>가장 최근 진료일 : </b></td>
-			<td width="125" align="center">${member.con_date}</td>
-	</tr><tr height="30">
-			<td width="125"><b>과거 진료과목 : </b></td>
-			<td width="125" align="center">${member.con_cat}</td>
-			<td width="125" align="center"/>
-			<td width="125" align="center"/>			
-	</tr>
-		
-	</table></div>
-	
-	<!-- input form -->
 	<form class="w3-container w3-card-4 w3-white w3-text-black" action="/innerpeace_aaa/member/apptPro" method="post"
 	style="height: 1050px; width:50%; margin-top: 70px;">
 		<input type="hidden" name="num" value="${num }">
 		<input type="hidden" name="boardid" value="${ boardid }"> <!-- form>hidden으로 내용 저장을 해야함 -->
 		<div class="reservation_form" style="height: 100%;">	
-	<div>
+		<div><br>
+			<label>이름 </label><span></span>
+			<input class="w3-input w3-hover-grey" style="width: 50%;"type="text" name="pat_name" required="">
+		</div>
+		<div>
+			<label>아이디</label><span></span>
+			<input class="w3-input w3-hover-grey" style="width: 50%;"type="text" name="pat_id" required="">
+		</div>
+		<div>
+			<label>기본 연락처</label><span></span>
+			<input class="w3-input w3-hover-grey" style="width: 50%;"type="text" name="tel1" required="">			
+		</div>
+		<div>
 			<label>연락처 2</label><span></span>
 			<input class="w3-input w3-hover-grey" style="width: 50%;" type="text" name="tel2" >
 		</div>
-		
+		<div>
+			<label>이메일</label><span></span>
+			<input class="w3-input w3-hover-grey" style="width: 50%;" type="email" name="email" >
+		</div>
+		<div>
+			<label>성별 : </label><span></span>
+			<input type="radio" name="gender" value="male">남
+			<input type="radio" name="gender" value="female">여
+		</div>
+		<div>
+			<label>생년월일<br><span></span></label>
+			<input class="date3" name="birthdate" type="text" required="required" value="MM/DD/YYYY">
+		</div><br>
 		
 		<div>
-			<label>선택하신 기관에서의 진료이력 </label><span></span>
+			<label>진료이력 </label><span></span>
 			<input type="radio" name="con_past" value="초진">초진
 			<input type="radio" name="con_past" value="재진">재진
 		</div>
@@ -189,11 +175,14 @@
 			<span></span>
 		<br><br>
 		<input type="submit" name="submit" value="예약하기"></div>
-	</div></form>	
-	
-	
+	</div>
+	</form>
 	</center>
 
-</div></form></form>
+	
+	
+	
+	<!-- footer contact admin -->
+	<!-- <h6 class="w3-bottom" align="center">contact: admin@innerpeace.com</h6> -->
 </body>
 </html>
