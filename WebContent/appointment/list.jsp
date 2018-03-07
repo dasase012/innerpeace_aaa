@@ -26,7 +26,7 @@
 
 
 	<p class="w3-left" style="padding-left: 30px"></p>
-<div class="w3-container">
+<div class="w3-container" style="margin-top: 80px;">
 <!-- <p class="w3-right w3-padding-right-large">
 	<a href="/innerpeace_aaa/member/home">메인페이지로 가기</a></p> -->
 	

@@ -48,16 +48,6 @@
 	<!--	welcome message typewriter effect   -->
 		<div class="typewriter" style="margin-top: 10%;">
 			<h1><div>
-			<!-- <span style="color:#ffcf3f;">i</span>
-			<span style="color:#ffbc49;">n</span>
-			<span style="color:#ffa953;">n</span>
-			<span style="color:#ff965c;">e</span>
-			<span style="color:#ff8366;">r</span>
-			<span style="color:#ff7070;">p</span>
-			<span style="color:#ff7d7d;">e</span>
-			<span style="color:#ff8a8a;">a</span>
-			<span style="color:#ff9797;">c</span>
-			<span style="color:#ffa4a4;">e</span> -->
 			Hello, welcome to innerpeace!</div></h1>
 		</div>
 		

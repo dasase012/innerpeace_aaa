@@ -86,14 +86,14 @@ public class MemberController extends Action{
 			return "/members/loginPro.jsp";
 		}else if (pwcheck==0) {
 			return "/members/loginPro.jsp";
-		}else if(id.equals("admin")){
+		}/*else if(id.equals("admin")){
   			  session.setAttribute("id",id);
   			  session.setAttribute("name", name);
 			 response.sendRedirect("/innerpeace_aaa/member/list?id="+id);
   			
-		}else{
+		}*/else{
 			  session.setAttribute("id",id);
-			 // session.setAttribute("name", name);	//name 저장 >> welcome 에 name을 넘겨줌
+			  session.setAttribute("name", name);	//name 저장 >> welcome 에 name을 넘겨줌
 			  System.out.println(name); 
 			  
 			 response.sendRedirect("/innerpeace_aaa/member/home");
@@ -140,8 +140,6 @@ public class MemberController extends Action{
 			int endPage = startPage+bottomLine-1;
 			if(endPage>pageCount) endPage = pageCount;
 
-		//	request.setAttribute("id", id);
-			//request.setAttribute("members", members);
 			request.setAttribute("count", count);
 			request.setAttribute("memberList", memberList);
 			request.setAttribute("currentPage", currentPage);
@@ -174,10 +172,100 @@ public class MemberController extends Action{
 			return "/members/content.jsp";
 		}
 
-	public String updateInfo(HttpServletRequest request,
+
+	public String updateForm(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
-			 return  " "; 
-			} 
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null || pageNum ==""){
+			pageNum="1";} 
+		try{
+			JoinDBBean dbPro = JoinDBBean.getInstance();
+			JoinDataBean member = dbPro.getMember(id);
+			request.setAttribute("member", member);
+			request.setAttribute("pageNum", pageNum);
+			
+		}catch(Exception e){}
+			 
+		
+		
+		return  "/members/updateForm.jsp"; 
+			}
+	
+	
+	public String updatePro(HttpServletRequest req,
+			 HttpServletResponse res)  throws Throwable { 
+			 
+		HttpSession session = req.getSession();
+		String id = (String)session.getAttribute("id"); 
+		
+		String pageNum = req.getParameter("pageNum");
+		if(pageNum == null || pageNum ==""){
+			pageNum="1";} 
+	
+		
+		JoinDataBean info= new JoinDataBean();
+		
+		
+		info.setId(req.getParameter("id"));
+		info.setName(req.getParameter("name"));
+		info.setPwd(req.getParameter("pwd"));
+		info.setGender(req.getParameter("gender"));
+		info.setBirthdate(req.getParameter("birthdate"));
+		info.setTel(req.getParameter("tel"));
+		info.setEmail(req.getParameter("email"));
+		info.setCon_past(req.getParameter("con_past"));
+		info.setCon_date(req.getParameter("con_date"));
+		info.setCon_cat(req.getParameter("con_cat"));
+		info.setPosition(req.getParameter("position"));
+		
+		System.out.println(info); 
+		JoinDBBean dbPro = JoinDBBean.getInstance(); 
+		int chk = dbPro.updateData(info);
+		
+		req.setAttribute("id", id);
+		req.setAttribute("pageNum", pageNum);
+		req.setAttribute("chk", chk);
+		
+		if (chk==1){ 
+			return "/members/updatePro.jsp";
+		}else{ 
+			return "/members/updatePro.jsp";
+		}
+	} 
+	
+	public String deleteForm(HttpServletRequest request,
+			 HttpServletResponse response)  throws Throwable { 
+		
+		String id = request.getParameter("id");
+		String pageNum = request.getParameter("pageNum");
+		
+		request.setAttribute("id", id);
+		request.setAttribute("pageNum", pageNum);
+		return  "/members/deleteForm.jsp"; 
+	} 
+	
+	public String deletePro(HttpServletRequest request,
+			 HttpServletResponse response)  throws Throwable { 
+		HttpSession session = request.getSession();
+		
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
+		
+		
+		
+		JoinDBBean dbPro = JoinDBBean.getInstance();
+		int check = dbPro.deleteData(id, pwd, (String) session.getAttribute("id"));
+		
+		request.setAttribute("check", check);
+	
+		
+			return "/members/deletePro.jsp";
+		
+	} 
 	
 	public String appt(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 

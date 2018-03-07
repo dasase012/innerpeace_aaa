@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,7 +37,13 @@
 				     <a href="/innerpeace_aaa/member/apptlist" class="w3-bar-item w3-button">예약관리</a>
 		    		 <a href="/innerpeace_aaa/videochat/video.jsp" class="w3-bar-item w3-button">원격진료</a>	 
 				     <a href="/innerpeace_aaa/appointment/history.jsp" class="w3-bar-item w3-button">진료기록</a>
-				     <a href="#" class="w3-bar-item w3-button">회원정보수정</a>
+				     
+				     <c:if test="${id != 'admin'}">
+				     <a href="/innerpeace_aaa/member/updateForm" class="w3-bar-item w3-button">회원정보수정</a>
+				     </c:if>
+				     <c:if test="${id == 'admin'}">
+				     <a href="/innerpeace_aaa/member/list" class="w3-bar-item w3-button">회원리스트보기</a>
+				     </c:if>
 				   </div>
 				 </div>
 			      <a href="/innerpeace_aaa/member/logout">

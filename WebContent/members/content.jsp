@@ -8,11 +8,16 @@
 <form method="post" name="updateform" action="updatePro" >
 <input type="hidden" name="id" value="${member.id}">
 <input type="hidden" name="pageNum" value="${pageNum}">
-<form class="w3-container w3-card-4 w3-white w3-text-black w3-margin" style="height: 100%;">
+	<form class="w3-container w3-card-4 w3-white w3-text-black w3-display-middle" 
+	style="height: 100%;">
 <div class="w3-row w3-section">
-<body><center><p><h3><b><u>회원 정보</u></b></h3></p>
+<body>
+	<!-- header -->
+	<%@ include file="/mainhome/header.jsp" %>
+	
+<center style="margin-top: 80px;"><p><h3><b><u>회원 정보</u></b></h3></p>
 <div class="container" id="info">
-	<table class="w3-table w3-bordered w3-centered" style="width:50%;">
+	<table class="w3-table w3-bordered w3-centered" style="width:40%;">
 	<tr height="30">
 		<td width="125" align="center"><b>아이디</b></td>
 		<td width="125" align="center">${member.id}</td>
@@ -64,7 +69,11 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="button" value="회원목록" 
 			onclick="document.location.href='list?pageNum=${pageNum}'">
-	</td></tr> </table></div></center></body>
+	</td></tr> </table></div></center>
+	
+	<!-- footer -->
+	<%@ include file="/mainhome/footer.jsp" %>
+	</body>
 
 </div></form></form>
 </body>

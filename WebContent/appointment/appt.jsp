@@ -39,7 +39,7 @@
 		
 	<!-- body board -->
 	<center>
-<div class="container" id="info">
+<div class="container" style="margin-top: 80px;">
 	<table class="w3-table-all w3-bordered w3-centered" style="width:50%;">
 	<tr height="30">
 		<td width="125" align="center"><b>아이디 : </b></td>
@@ -73,7 +73,7 @@
 	
 	<!-- input form -->
 	<form class="w3-container w3-card-4 w3-white w3-text-black" action="apptPro" method="post"
-	style="height: 1050px; width:50%; margin-top: 70px;">
+	style="height: 80%; width:50%; margin-top: 10px; padding: 10;">
 		<input type="hidden" name="num" value="${num}">
 		<input type="hidden" name="id" value="${member.id}">
 		<input type="hidden" name="boardid" value="${ boardid }"> <!-- form>hidden으로 내용 저장을 해야함 -->

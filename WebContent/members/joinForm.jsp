@@ -13,7 +13,7 @@
 	body {
 		font-family: 'Jeju Gothic', sans-serif;
 		background-size: cover;
-		background-image: url("../signupimg.jpg");
+		background-image: url("/innerpeace_aaa/resources/signupimg.jpg");
  		padding-top: 5en;
  		display: flex;
  		justify-content: center;

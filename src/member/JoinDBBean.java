@@ -22,38 +22,7 @@ public class JoinDBBean {
 		}
 		private JoinDBBean() {	
 		}
-	
-	/*public JoinDataBean selectById(Connection conn, String id)throws SQLException{
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			pstmt = conn.prepareStatement("select * from member where id = ?");
-			pstmt.setString(1, id);
-			rs=pstmt.executeQuery();
-			JoinDataBean member = null;
-			if(rs.next()) {
-				member = new JoinDataBean(
-						rs.getString("id"),
-						rs.getString("name"),
-						rs.getString("pwd"),
-						rs.getString("gender"),
-						rs.getString("birthdate"),
-						rs.getString("tel"),
-						rs.getString("email"),
-						rs.getString("con_past"),
-						rs.getString("con_date"),
-						rs.getString("con_cat"),
-						rs.getString("position"),
-						toDate(rs.getTimestamp("regdate"))
-						);
-			}
-			return member;
-		}finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(pstmt);
-		}
-	}*/
-	
+		
 	//Connection method
 		public static Connection getConnection(){
 			Connection conn = null;
@@ -302,6 +271,37 @@ public class JoinDBBean {
 			}finally {
 				close(conn,null,pstmt);
 			}return chk;
+		}
+		
+		//delete
+		public int deleteData(String id, String pwd, String admin)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int x = -1;
+			System.out.println(id+":"+pwd+":"+admin);
+			try {
+				conn = getConnection();
+			if(admin.equals("admin")) {
+				String sql = "delete from member where id=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);				
+			}
+			else {
+			String sql = "delete from member where id=? and pwd=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd); }
+			
+			
+			x=pstmt.executeUpdate();
+				System.out.println(x);
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}finally {
+				close(conn,rs,pstmt);
+			}return x;
+			
 		}
 
 }
