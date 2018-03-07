@@ -46,17 +46,12 @@
 </head>
 
 <body>
-	
-	<!-- Navbar (sit on top) -->
-	<%@ include file="/mainhome/header.jsp" %>
+
 
 	<!-- jsoup -->
 	<%-- <%@ include file="/mainhome/jsoup.jsp" %> --%>
 	<iframe src="/innerpeace_aaa/mainhome/jsoup.jsp" class="w3-display-right" style="overflow: scroll;"></iframe>
 
-	
-	<!-- footer contact admin -->
-	<h6 class="w3-bottom" align="center">contact: admin@innerpeace.com</h6>
 	
 </body>
 </html>

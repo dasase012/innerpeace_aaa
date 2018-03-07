@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>병원/의료진 찾기</title>
+    <title>병원찾기</title>
     <style>
 .map_wrap, .map_wrap * {
 	/* margin:0;padding:0; */
@@ -94,7 +94,7 @@
         <div class="option">
             <div>
                 <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15"> 
+                   <input type="text" value="서울시 정신과" id="keyword" size="30"> 
                     <button type="submit">검색하기</button> 
                 </form>
             </div>
@@ -323,6 +323,21 @@ function removeAllChildNods(el) {
         el.removeChild (el.lastChild);
     }
 }
+		//병원 카테고리만 표시하기
+		 /* var places = new daum.maps.services.Places();
+		
+		var callback = function(result, status) {
+		    if (status === daum.maps.services.Status.OK) {
+		        console.log(result);
+		    }
+		};
+		
+		// 공공기관 코드 검색
+		places.categorySearch('HP8', callback, {
+		    // Map 객체를 지정하지 않았으므로 좌표객체를 생성하여 넘겨준다.
+		    location: new daum.maps.LatLng(37.564968, 126.939909)
+		}); */
+ 
 </script>
 
 		<!-- footer contact admin -->

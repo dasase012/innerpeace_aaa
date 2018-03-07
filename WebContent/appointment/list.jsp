@@ -34,7 +34,7 @@
 	<a href="/innerpeace_aaa/member/home">메인페이지로 가기</a></p> -->
 	
 	<c:if test="${count==0 }">
-	<table class="table-bordered" width="700">
+	<table class="table-bordered w3-display-topmiddle" style="margin-top: 10%;" width="700">
 		<tr class="w3-grey">
 			<td align="center">예약된 진료 일정이 없습니다.</td>
 	</table>
