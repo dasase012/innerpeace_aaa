@@ -38,7 +38,35 @@
 	
 	
 	//id duplicate
-
+		// 회원가입 화면의 입력값들을 검사한다.
+        function checkValue()
+        {
+            var form = document.userInfo;
+        
+            if(!form.id.value){
+                alert("아이디를 입력하세요.");
+                return false;
+            }
+            
+            if(form.idDuplication.value != "idCheck"){
+                alert("아이디 중복체크를 해주세요.");
+                return false;
+            }
+        }
+      // 아이디 중복체크 화면open
+        function openIdChk(){
+        
+            window.name = "parentForm";
+            window.open("/innerpeace_aaa/members/IdCheck.jsp",
+                    "chkForm", "width=500, height=300, resizable = no, scrollbars = no");    
+        }
+ 
+        // 아이디 입력창에 값 입력시 hidden에 idUncheck를 세팅한다.
+        // 이렇게 하는 이유는 중복체크 후 다시 아이디 창이 새로운 아이디를 입력했을 때
+        // 다시 중복체크를 하도록 한다.
+        function inputIdChk(){
+            document.userInfo.idDuplication.value ="idUncheck";
+        }
 
 </script>
 
@@ -48,7 +76,7 @@
 <div class="w3-container w3-half" style="width:40%;">
   <ul class="w3-ul w3-hover-shadow">
   <li class="w3-teal w3-xlarge w3-center w3-padding-32" style="color: black;">innerpeace 회원 가입</li>
-	<form class="w3-container w3-transparent" action="joinSuccess" method="post">
+	<form class="w3-container w3-transparent" action="joinSuccess" onsubmit="return checkValue()" method="post">
 		<%-- <input type="hidden" name="id" value="${info.id }">
 		<input type="hidden" name="id" value="${info.name }"> --%>
 		
@@ -58,7 +86,9 @@
 			이름 :<input class="w3-input w3-border w3-light-grey" type="text" name="name" size="20" required="required">
 			</label><br>
 			<label class="w3-text-white">
-			아이디 :<input class="w3-input w3-border w3-light-grey" type="text" name="id" size="20"  required="required"></label><br>
+			아이디 :<input class="w3-input w3-border w3-light-grey" type="text" name="id" size="20" onkeydown="inputIdChk()" required="required"></label><br>
+				 <input type="button" value="중복확인" onclick="openIdChk()">    
+	             <input type="hidden" name="idDuplication" value="idUncheck" >
 			<label class="w3-text-white">
 			비밀번호 :<input class="w3-input w3-border  w3-light-grey"  type="password" name="pwd" size="20" required="required"></label><br>
 			<label class="w3-text-white">

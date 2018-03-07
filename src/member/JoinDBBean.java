@@ -245,6 +245,44 @@ public class JoinDBBean {
 			}	
 		}	
 	
+		/**
+	     * 아이디 중복체크를 한다.
+	     * @param id 아이디
+	     * @return x : 아이디 중복여부 확인값
+	     *//*
+	    public boolean duplicateIdCheck(String id)
+	    {
+	        Connection conn = null;
+	        PreparedStatement pstm = null;
+	        ResultSet rs = null;
+	        boolean x= false;
+	        
+	        try {
+	            // 쿼리
+	            StringBuffer query = new StringBuffer();
+	            query.append("SELECT ID FROM MEMBER WHERE ID=?");
+	                        
+	            conn = getConnection();
+	            pstm = conn.prepareStatement(query.toString());
+	            pstm.setString(1, id);
+	            rs = pstm.executeQuery();
+	            
+	            if(rs.next()) x= true; //해당 아이디 존재
+	            
+	            return x;
+	            
+	        } catch (Exception sqle) {
+	            throw new RuntimeException(sqle.getMessage());
+	        } finally {
+	            try{
+	                if ( pstm != null ){ pstm.close(); pstm=null; }
+	                if ( conn != null ){ conn.close(); conn=null;    }
+	            }catch(Exception e){
+	                throw new RuntimeException(e.getMessage());
+	            }
+	        }
+	    }*/
+		
 		//update  
 		public int updateData(JoinDataBean info) {
 			

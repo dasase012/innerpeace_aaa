@@ -1,6 +1,5 @@
 package member;
 
-import java.awt.TextField;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,8 +9,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import jdbc.JdbcUtil;
 
 
 public class ApptDBBean {
@@ -106,7 +103,7 @@ public class ApptDBBean {
 			Connection con = getConnection();
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
-			//int number = 0;
+			int num = 0;
 			
 			try {
 			pstmt=con.prepareStatement(sql);
@@ -212,6 +209,33 @@ public class ApptDBBean {
 			}	
 		}	
 	
+		//delete
+				public int deleteData(int num)throws Exception{
+					Connection conn = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					
+					String sql = "delete from consultation where num=? ";
+					
+					int x = -1;
+					//System.out.println(id+":"+pwd+":"+admin);
+					try {
+						conn = getConnection();
+					
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, num);
+				
+					x=pstmt.executeUpdate();
+						System.out.println(x);
+					}catch(Exception ex) {
+						ex.printStackTrace();
+					}finally {
+						close(conn,rs,pstmt);
+					}return x;
+					
+				}
+		
+		
 /*		//update  
 		public int updateData(JoinDataBean info) {
 			

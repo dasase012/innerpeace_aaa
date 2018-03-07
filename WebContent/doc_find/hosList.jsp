@@ -1,5 +1,5 @@
-<%@ page import="member.JoinDataBean" %>
-<%@ page import="member.JoinDBBean" %>
+<%@ page import="member.HospitalDataBean" %>
+<%@ page import="member.HospitalDBBean" %>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -30,37 +30,36 @@
 
 	<p class="w3-left" style="padding-left: 30px"></p>
 <div class="w3-container" style="margin-top: 80px;">
-<!-- <p class="w3-right w3-padding-right-large">
-	<a href="/innerpeace_aaa/member/home">메인페이지로 가기</a></p> -->
+
 	
 	<c:if test="${count==0 }">
 	<table class="table-bordered" width="700">
 		<tr class="w3-grey">
-			<td align="center">예약된 진료 일정이 없습니다.</td>
+			<td align="center"></td>
 	</table>
 	</c:if>
 	<c:if test="${count!=0}">
 	<table class="w3-table-all" width="60%">
 		<tr class="w3-white">
 		<td align="center" width="50">번호</td>
-		<td align="center" width="50">상담과목</td>
-		<td align="center" width="50">담당의료진</td>
-		<td align="center" width="100">진료예약일1</td>
-		<td align="center" width="100">진료예약일2</td>
-		<td align="center" width="50">예약관리</td>
+		<td align="center" width="50">지역</td>
+		<td align="center" width="50">병원이름</td>
+		<td align="center" width="100">주소</td>
+		<td align="center" width="100">전화번호</td>
+		<td align="center" width="50">홈페이지</td>
 	
-	<c:forEach var="records" items="${apptList}">
+	<c:forEach var="hospitals" items="${hosList}">
 		<tr height="30">
 		<td align="center" width="50">${num}</td>
 		<c:set var="num" value="${num-1}"/> 
-		<td align="center" width="50"><%--  <a href="content?id=${member.id}&pageNum=${curentPage}">
-			${member.id}  --%>${records.con_cat}</td>
-			<td align="center" width="50">${records.doc}</td>
-			<td align="center" width="100">${records.appt_date1}</td>
-			<td align="center" width="100">${records.appt_date2}</td>
+		<td align="center" width="50">${local}</td>
+			<td align="center" width="50">${hos_name}</td>
+			<td align="center" width="100">${address}</td>
+			<td align="center" width="100">${tel}</td>
+			<td align="center" width="100">${hp}</td>
 			<td align="center" width="50">
-				<input type="button" value="예약취소" 
-			onclick="document.location.href='apptCancel?num=${records.num}'">
+				<input type="button" value="예약하기" 
+			onclick="document.location.href='appt?id=${records.id}'">
 			</td>
 			</tr><!-- </a> --></c:forEach>	</table> </c:if>
 
@@ -72,14 +71,14 @@
 		</c:if>
 		
 		<c:forEach var="i" begin="${startPage}" end="${endPage}">	
-		<a href="apptlist?pageNum=${i}">
+		<a href="hoslist?pageNum=${i}">
 		<c:if test="${i!=currentPage }">[${i}]</c:if>
 		<c:if test="${i==currentPage }">
 		<font color='red'>[${i }]</font></c:if></a>
 		</c:forEach>
 		
 		<c:if test="${endPage<pageCount }">
-		<a href="apptlist?pageNum=${startPage+bottomLine}">[다음]</a>
+		<a href="hoslist?pageNum=${startPage+bottomLine}">[다음]</a>
 		</c:if></c:if>
 </div>
 </div>

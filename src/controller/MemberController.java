@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import com.sist.msk.Action;
 
 import member.ApptDBBean;
 import member.ApptDataBean;
+import member.HospitalDBBean;
 import member.JoinDBBean;
 import member.JoinDataBean;
 
@@ -35,7 +37,7 @@ public class MemberController extends Action{
 			 HttpServletResponse response)  throws Throwable { 
 			 return  "/members/joinForm.jsp"; 
 			} 
-	
+
 	public String joinSuccess(HttpServletRequest req,
 			 HttpServletResponse res)  throws Throwable { 
 
@@ -269,14 +271,20 @@ public class MemberController extends Action{
 	
 	public String appt(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
+		
 			HttpSession session = request.getSession();
 			String id = (String)session.getAttribute("id");
+			
+			String boardid = request.getParameter("boardid");
+			if(boardid == null || boardid.equals("")) boardid = "1";
+			
 				try{
 				JoinDBBean dbPro = JoinDBBean.getInstance();
 				JoinDataBean member = dbPro.getMember(id);
 				
 				System.out.println(member);
 				request.setAttribute("member", member);
+				request.setAttribute("boardid", boardid);
 			
 				
 			}catch(Exception e){}
@@ -286,6 +294,9 @@ public class MemberController extends Action{
 	
 	public String apptPro(HttpServletRequest req,
 			 HttpServletResponse res)  throws Throwable { 
+		
+		HttpSession session = req.getSession(); 
+		String id = (String)session.getAttribute("id");
 		
 		//consultation 테이블 데이터
 		 String boardid = req.getParameter("boardid");
@@ -321,13 +332,45 @@ public class MemberController extends Action{
 		return null;
 
 		}
+	
+	public String apptCancel(HttpServletRequest request,
+			 HttpServletResponse response)  throws Throwable { 
+		
+		HttpSession session = request.getSession(); 
+		String id = (String)session.getAttribute("id");
+		
+		String boardid = request.getParameter("boardid");
+		if(boardid==null) boardid="1";
+		String pageNum=request.getParameter("pageNum");
+		if(pageNum==null||pageNum==""){
+			pageNum="1";
+		}
+		
+		ApptDataBean records= new ApptDataBean();
+		ApptDBBean dbPro = ApptDBBean.getInstance(); 
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		int check = dbPro.deleteData(num);
+		
+		if(request.getParameter("num")!=null && !request.getParameter("num").equals("")) {
+			request.setAttribute("check", check);records.setNum(Integer.parseInt(request.getParameter("num")));
+		}
+		
+		request.setAttribute("num", num);
+		request.setAttribute("check", check);
+		request.setAttribute("pageNum", pageNum);
+		
+		return "/appointment/cancelPro.jsp";
+	
+	} 
+	
 	public String apptlist(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
 			
 			HttpSession session = request.getSession(); 
 			String id = (String)session.getAttribute("id");
-			
-		  String boardid = request.getParameter("boardid"); 
+		  
+			String boardid = request.getParameter("boardid"); 
 			if(boardid==null || boardid.equals("")) boardid="1";
 			int pageSize = 5;
 		   String pageNum = request.getParameter("pageNum");
@@ -339,9 +382,11 @@ public class MemberController extends Action{
 		   int count = 0;
 		   int num = 0;
 		   List apptList = null;
+		   
 		   ApptDBBean dbPro = ApptDBBean.getInstance();
 		   count = dbPro.getApptCount(boardid);
 		   System.out.println(id+"==========================="+count);
+		  
 		   if(count>0){
 			apptList = dbPro.getRecords(startRow, endRow, boardid, id);
 		   }
@@ -356,9 +401,9 @@ public class MemberController extends Action{
 			int endPage = startPage+bottomLine-1;
 			if(endPage>pageCount) endPage = pageCount;
 			
-			//request.setAttribute("id", id);
+			request.setAttribute("id", id);
 			request.setAttribute("boardid", boardid);
-			//request.setAttribute("pageNum", pageNum);
+			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("count", count);
 			request.setAttribute("apptList", apptList);
 			request.setAttribute("currentPage", currentPage);
@@ -373,4 +418,55 @@ public class MemberController extends Action{
 			
 			return "/appointment/list.jsp";
 	}
+	
+	public String hosList(HttpServletRequest request,
+			 HttpServletResponse response)  throws Throwable { 
+	
+		/*HttpSession session = request.getSession(); 
+		String id = (String)session.getAttribute("id");
+	  */
+		String boardid = request.getParameter("boardid"); 
+		if(boardid==null || boardid.equals("")) boardid="1";
+		int pageSize = 5;
+	   String pageNum = request.getParameter("pageNum");
+	   if(pageNum==null || pageNum =="") {pageNum = "1";}
+	     int currentPage = Integer.parseInt(pageNum);
+	   
+	   int startRow = (currentPage-1)*pageSize+1;
+	   int endRow = currentPage*pageSize;
+	   int count = 0;
+	   int num = 0;
+	   List hosList = null;
+	   
+	   HospitalDBBean dbPro = HospitalDBBean.getInstance();
+	   count = dbPro.getHosCount(boardid);
+	  /* System.out.println(id+"==========================="+count);*/
+	  
+	   if(count>0){
+		hosList = dbPro.getHospitals(startRow, endRow, boardid);
+	   }
+	   System.out.println("================");
+	   System.out.println(hosList);
+	   System.out.println("================");
+	  	num = count-(currentPage-1)*pageSize;
+	   
+	  	int bottomLine=3;
+	  	int pageCount = count/pageSize + (count%pageSize == 0?0:1);
+		int startPage = 1 + (currentPage-1)/bottomLine * bottomLine;
+		int endPage = startPage+bottomLine-1;
+		if(endPage>pageCount) endPage = pageCount;
+		
+		request.setAttribute("boardid", boardid);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("count", count);
+		request.setAttribute("hosList", hosList);
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("bottomLine", bottomLine);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("num", num);
+		
+		return  "/doc_find/hosList.jsp"; 
+			} 
+	
 }
