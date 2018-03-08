@@ -3,6 +3,7 @@
 <html>
 <head><title>게시판</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 </head>
 
 	<form method="post" name="updateform" action="updatePro" >
@@ -14,7 +15,7 @@
 	<!-- header -->
 	<%@ include file="/mainhome/header.jsp" %>
 	
-<center style="margin-top:80px;"><p><h3><b><u>회원 정보</u></b></h3></p>
+<center class="w3-card-4 w3-display-middle" style="margin-top:50px; width: 800; height: 600; margin-bottom: 50; top: 400px;"><p><h3><b><u>회원 정보</u></b></h3></p>
 <div class="container" id="info">
 	<table class="w3-table w3-bordered w3-centered" style="width:40%;">
 	<tr height="30">

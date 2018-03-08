@@ -20,7 +20,7 @@ onsubmit="return deleteSave()">
 	<tr height="30">
 	<td align="center">
 	<input type="submit" value="Å»Åð">
-	<input type="button" value="È¸¿ø¸ñ·Ï" onclick="document.location.href='list?pageNum=${pageNum}'">
+	<input type="button" value="Ãë¼Ò" onclick="document.location.href='updateForm?pageNum=${pageNum}'">
 	</td></tr></table></form></center></div>
 </body>
 </html>

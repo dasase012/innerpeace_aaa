@@ -9,17 +9,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
 </head>
-<%  //String url ="http://www.psychiatricnews.net/news/articleList.html?sc_section_code=S1N1&view_type=sm";
-	String url = "http://www.hidoc.co.kr/mychart/healthForecast/maplist/20000";	
+<%  String url ="http://www.hidoc.co.kr/news/main";
 	String line="";
 	try{
 		Document doc;
 		doc = Jsoup.connect(url).get();
-		//div[class=con_left]>div[class=main]
-		//Elements media1 =<div class="beset_post_list"><div class="best_post_inner">
-
-		Elements media1 = doc.select("div#healthMap");
+		//div[class=best_post]>div[class=text_area]iv class="beset_post_list
+		Elements media1 = doc.select("div[class=box_main] > ul[class=news_list_02]");
 		Elements media2 = doc.select("Script");
 		Elements media3 = doc.select("link");
 
@@ -36,14 +34,13 @@
 			line+=templine;
 		}
 
-
 	}catch(IOException e){
 		e.printStackTrace();
 	}
 	
 %>
 <body>
-<% //line=line.replace("http://src.hidoc.co.kr/image/lib/", "www.hidoc.co.kr/news/interviewncolumn/item/"); %>
+<% line=line.replace("http://src.hidoc.co.kr/image/lib/", "http://www.hidoc.co.kr/news/"); %>
 <%=line %>
 </body>
 </html>

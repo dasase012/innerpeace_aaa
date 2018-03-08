@@ -60,7 +60,7 @@
     <div class="row">
       <div class="col-md-2">
 
-        <h2 class="h3">Profile/Config</h2>
+       <!--  <h2 class="h3">Profile/Config</h2> -->
         <h3 class="h4">User Id</h3>
         <form>
           <div class="form-group">

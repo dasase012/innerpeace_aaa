@@ -29,6 +29,16 @@ public class MemberController extends Action{
 			 return  "/index.jsp"; 
 			} 
 	
+	public String map(HttpServletRequest request,
+			 HttpServletResponse response)  throws Throwable { 
+			 return  "/doc_find/map.jsp"; 
+			} 
+	
+	public String video(HttpServletRequest request,
+			 HttpServletResponse response)  throws Throwable { 
+			 return  "/videochat/video.jsp"; 
+			} 
+	
 	public String loginForm(HttpServletRequest request,HttpServletResponse response)  throws Throwable { 		
 		return  "/members/loginForm.jsp"; 
 			}
@@ -143,6 +153,7 @@ public class MemberController extends Action{
 			if(endPage>pageCount) endPage = pageCount;
 
 			request.setAttribute("count", count);
+			request.setAttribute("pageCount", pageCount);
 			request.setAttribute("memberList", memberList);
 			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("startPage", startPage);
@@ -241,8 +252,11 @@ public class MemberController extends Action{
 	
 	public String deleteForm(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");  //로그인된 본인 아이디에 해당하는 패스워드로 delete하기 위해 필요
+
+		id = request.getParameter("id");	//admin으로 delete하기위해 필요
 		
-		String id = request.getParameter("id");
 		String pageNum = request.getParameter("pageNum");
 		
 		request.setAttribute("id", id);
@@ -369,14 +383,14 @@ public class MemberController extends Action{
 			
 			HttpSession session = request.getSession(); 
 			String id = (String)session.getAttribute("id");
-		  
+			
+			
 			String boardid = request.getParameter("boardid"); 
 			if(boardid==null || boardid.equals("")) boardid="1";
 			int pageSize = 5;
 		   String pageNum = request.getParameter("pageNum");
 		   if(pageNum==null || pageNum =="") {pageNum = "1";}
-		     int currentPage = Integer.parseInt(pageNum);
-		   
+		   int currentPage = Integer.parseInt(pageNum); 
 		   int startRow = (currentPage-1)*pageSize+1;
 		   int endRow = currentPage*pageSize;
 		   int count = 0;
@@ -405,16 +419,13 @@ public class MemberController extends Action{
 			request.setAttribute("boardid", boardid);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("count", count);
+			request.setAttribute("pageCount", pageCount);
 			request.setAttribute("apptList", apptList);
 			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("bottomLine", bottomLine);
 			request.setAttribute("endPage", endPage);
 			request.setAttribute("num", num);
-			
-		//	response.sendRedirect(request.getContextPath()+"/member/apptlist?id="+id+"&pageNum="+pageNum+"&boardid="+boardid);
-			
-		//	return null;
 			
 			return "/appointment/list.jsp";
 	}

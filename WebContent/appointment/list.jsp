@@ -42,7 +42,7 @@
 	<c:if test="${count!=0}">
 	<table class="w3-table-all" width="60%">
 		<tr class="w3-white">
-		<td align="center" width="50">번호</td>
+		<!-- <td align="center" width="50">번호</td> -->
 		<td align="center" width="50">상담과목</td>
 		<td align="center" width="50">담당의료진</td>
 		<td align="center" width="100">진료예약일1</td>
@@ -51,10 +51,9 @@
 	
 	<c:forEach var="records" items="${apptList}">
 		<tr height="30">
-		<td align="center" width="50">${num}</td>
-		<c:set var="num" value="${num-1}"/> 
-		<td align="center" width="50"><%--  <a href="content?id=${member.id}&pageNum=${curentPage}">
-			${member.id}  --%>${records.con_cat}</td>
+		<%-- <td align="center" width="50">${num}</td>
+		<c:set var="num" value="${num-1}"/>  --%>
+		<td align="center" width="50">${records.con_cat}</td>
 			<td align="center" width="50">${records.doc}</td>
 			<td align="center" width="100">${records.appt_date1}</td>
 			<td align="center" width="100">${records.appt_date2}</td>
@@ -66,7 +65,7 @@
 
 <div class="w3-center">
 	
-	<c:if test="${count>0}">			
+	<%-- <c:if test="${count>0}">			
 		<c:if test="${startPage>bottomLine}">
 		<a href="apptlist?pageNum=${startPage-bottomLine}">[이전]</a>
 		</c:if>
@@ -80,7 +79,7 @@
 		
 		<c:if test="${endPage<pageCount }">
 		<a href="apptlist?pageNum=${startPage+bottomLine}">[다음]</a>
-		</c:if></c:if>
+		</c:if></c:if> --%>
 </div>
 </div>
 	<!-- footer contact admin -->

@@ -26,8 +26,8 @@ public class ApptDBBean {
 		public static Connection getConnection(){
 			Connection conn = null;
 			try {
-				String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";//	HOME
-				/*String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";*/  //	SIST
+				/*String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";*///	HOME
+				String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";  //	SIST
 				String dbId = "scott";
 				String dbPass = "tiger";
 				Class.forName("oracle.jdbc.driver.OracleDriver");

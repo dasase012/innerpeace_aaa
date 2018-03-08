@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<!-- Navbar (sit on top) -->
+	<%@ include file="/mainhome/header.jsp" %>
 
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
     <title>병원찾기</title>
     <style>
@@ -68,17 +73,6 @@
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 
-<style>
-   
- 
-  body {
-    margin: 40px 10px;
-    padding: 0;
-    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-    font-size: 14px;
-  }
-
-</style>
 </head>
 <body>
 
@@ -94,6 +88,7 @@
         <div class="option">
             <div>
                 <form onsubmit="searchPlaces(); return false;">
+                	"<b>지역+정신과</b>  혹은  <b>지역+상담</b> 이라고 검색해보세요!"<br/>
                    <input type="text" value="서울시 정신과" id="keyword" size="30"> 
                     <button type="submit">검색하기</button> 
                 </form>
@@ -250,8 +245,9 @@ function getListItem(index, places) {
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 function addMarker(position, idx, title) {
-    var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-        imageSize = new daum.maps.Size(36, 37),  // 마커 이미지의 크기
+    	var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+    	//var imageSrc = '/innerpeace_aaa/resources/hosmarker.png',
+    	imageSize = new daum.maps.Size(36, 37),  // 마커 이미지의 크기
         imgOptions =  {
             spriteSize : new daum.maps.Size(36, 691), // 스프라이트 이미지의 크기
             spriteOrigin : new daum.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표

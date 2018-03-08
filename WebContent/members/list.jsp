@@ -63,7 +63,6 @@
 		</c:forEach>
 		
 		<c:if test="${endPage<pageCount }">
-		if(endPage<pageCount){%>
 		<a href="list?pageNum=${startPage+bottomLine}">[¥Ÿ¿Ω]</a>
 		</c:if></c:if>
 </div>

@@ -19,7 +19,7 @@
 </head>
 <body>
 	<div class="footer w3-light-grey">
-	  <p> innerpeace.co.kr (이너피스코리아) | 경기도 고양시 일산서구 킨텍스로 | 02.1234.5678</p>
+	  <p> <a href="mailto:dasase012@hotmail.com">contact : admin@innerpeace.com</a></p>
 	</div>
 </body>
 </html>
