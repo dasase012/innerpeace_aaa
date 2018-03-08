@@ -16,7 +16,7 @@ import com.sist.msk.Action;
 import member.ApptDBBean;
 import member.ApptDataBean;
 import member.HospitalDBBean;
-import member.JoinDBBean;
+import member.JoinDBBeanoriginal;
 import member.JoinDataBean;
 
 
@@ -73,7 +73,7 @@ public class MemberController extends Action{
 		/*info.setRegdate(new Timestamp(((JoinDataBean) req).getRegdate().getTime()));*/
 				
 		System.out.println(info); 
-		JoinDBBean dbPro = JoinDBBean.getInstance();
+		JoinDBBeanoriginal dbPro = JoinDBBeanoriginal.getInstance();
 		dbPro.insertData(info);
 		res.sendRedirect("/innerpeace_aaa/member/index");
 			
@@ -83,7 +83,7 @@ public class MemberController extends Action{
 	}
 	
 	public String loginPro(HttpServletRequest request,HttpServletResponse response)  throws Throwable { 
-		JoinDBBean dbPro = JoinDBBean.getInstance(); 
+		JoinDBBeanoriginal dbPro = JoinDBBeanoriginal.getInstance(); 
 		HttpSession session = request.getSession();
 	
 		String id = request.getParameter("id");
@@ -139,7 +139,7 @@ public class MemberController extends Action{
 		   int count = 0;
 		   int number = 0;
 		   List memberList = null;
-		   JoinDBBean dbPro = JoinDBBean.getInstance();
+		   JoinDBBeanoriginal dbPro = JoinDBBeanoriginal.getInstance();
 		   count = dbPro.getMemberCount();
 		   if(count>0){
 			memberList = dbPro.getMembers(startRow,endRow);
@@ -174,7 +174,7 @@ public class MemberController extends Action{
 				pageNum="1";}
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 			try{
-				JoinDBBean dbPro = JoinDBBean.getInstance();
+				JoinDBBeanoriginal dbPro = JoinDBBeanoriginal.getInstance();
 				JoinDataBean member = dbPro.getMember(id);
 			
 				request.setAttribute("member", member);
@@ -196,7 +196,7 @@ public class MemberController extends Action{
 		if(pageNum == null || pageNum ==""){
 			pageNum="1";} 
 		try{
-			JoinDBBean dbPro = JoinDBBean.getInstance();
+			JoinDBBeanoriginal dbPro = JoinDBBeanoriginal.getInstance();
 			JoinDataBean member = dbPro.getMember(id);
 			request.setAttribute("member", member);
 			request.setAttribute("pageNum", pageNum);
@@ -236,7 +236,7 @@ public class MemberController extends Action{
 		info.setPosition(req.getParameter("position"));
 		
 		System.out.println(info); 
-		JoinDBBean dbPro = JoinDBBean.getInstance(); 
+		JoinDBBeanoriginal dbPro = JoinDBBeanoriginal.getInstance(); 
 		int chk = dbPro.updateData(info);
 		
 		req.setAttribute("id", id);
@@ -273,7 +273,7 @@ public class MemberController extends Action{
 		
 		
 		
-		JoinDBBean dbPro = JoinDBBean.getInstance();
+		JoinDBBeanoriginal dbPro = JoinDBBeanoriginal.getInstance();
 		int check = dbPro.deleteData(id, pwd, (String) session.getAttribute("id"));
 		
 		request.setAttribute("check", check);
@@ -293,7 +293,7 @@ public class MemberController extends Action{
 			if(boardid == null || boardid.equals("")) boardid = "1";
 			
 				try{
-				JoinDBBean dbPro = JoinDBBean.getInstance();
+				JoinDBBeanoriginal dbPro = JoinDBBeanoriginal.getInstance();
 				JoinDataBean member = dbPro.getMember(id);
 				
 				System.out.println(member);

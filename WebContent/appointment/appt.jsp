@@ -75,7 +75,7 @@
 	<!-- <form class="w3-container w3-card-4 w3-white w3-text-black" action="apptPro" method="post"
 	style="height: 80%; width:50%; margin-top: 10px; padding: 10;"> -->
 	
-	<form class="w3-container w3-card-4 w3-white w3-text-black" action="apptPro" method="post" style="/* height: 100%; */margin-top:50px; width: 800; height: 700; margin-bottom: 50; top: 400px;">
+	<form class="w3-container w3-card-4 w3-white w3-text-black" action="apptPro" method="post" style="/* height: 100%; */margin-top:50px; width: 800; height: 750; margin-bottom: 50; top: 400px;">
 	<div class="w3-row w3-section">
 		<input type="hidden" name="num" value="${num}">
 		<input type="hidden" name="id" value="${member.id}">
@@ -86,12 +86,12 @@
 			<input class="w3-input w3-hover-grey" style="width: 50%;" type="text" name="tel2" >
 		</div>
 		
-		
+		<br>
 		<div>
-			<label>선택하신 기관에서의 진료이력 </label><span></span>
+			<label ">선택하신 기관에서의 진료이력: </label><span></span>
 			<input type="radio" name="con_past" value="초진">초진
 			<input type="radio" name="con_past" value="재진">재진
-		</div>
+		</div><br>
 		<div>
 	
 			<select id="category1" class="w3-select" name="con_cat" style="width: 50%;" >
@@ -116,7 +116,7 @@
 				<option value="성폭력,왕따 후유증">성폭력 피해 후유증,왕따 후유증</option>
 			</select>
 			<span></span>
-		</div>
+		</div><br>
 		<div>
 			<select id="category2" class="w3-select" name="doc" style="width: 50%;" >
 				<option value="">병원을 등록된 리스트에서 골라주세요*</option>

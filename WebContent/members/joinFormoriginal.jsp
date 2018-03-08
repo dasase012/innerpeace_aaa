@@ -38,21 +38,8 @@
 	
 	
 	//id duplicate
-	function check(){
-		if(!document.joinForm.id.value){
-			alert("ID를 입력하세요");
-			return false;
-		}
-	}
-	function confirmId(){
-		if(document.joinForm.id.value == ""){
-			alert("ID를 입력하세요");
-			return;
-		}
-		url = "/innerpeace_aaa/members/confirmId.jsp?id=" + document.joinForm.id.value;
-		open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
-	}
-	
+
+
 </script>
 
 <body>
@@ -61,7 +48,7 @@
 <div class="w3-container w3-half" style="width:40%;">
   <ul class="w3-ul w3-hover-shadow">
   <li class="w3-amber w3-xlarge w3-center w3-padding-32" style="color: black;">innerpeace 회원 가입</li>
-	<form class="w3-container w3-transparent" action="joinSuccess" method="post" name="joinForm" onSubmit="return check()">
+	<form class="w3-container w3-transparent" action="joinSuccess" method="post">
 		<%-- <input type="hidden" name="id" value="${info.id }">
 		<input type="hidden" name="id" value="${info.name }"> --%>
 		
@@ -71,9 +58,7 @@
 			이름 :<input class="w3-input w3-border w3-light-grey" type="text" name="name" size="20" required="required">
 			</label><br>
 			<label class="w3-text-white">
-			아이디 :&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="중복확인" name="confirm_id" onClick="confirmId(this.form)"/>
-			<input class="w3-input w3-border w3-light-grey" type="text" name="id" size="20"  required="required"></label>
-			<br>
+			아이디 :<input class="w3-input w3-border w3-light-grey" type="text" name="id" size="20"  required="required"></label><br>
 			<label class="w3-text-white">
 			비밀번호 :<input class="w3-input w3-border  w3-light-grey" type="password" name="pwd" size="20" required="required"></label><br>
 			<label class="w3-text-white">

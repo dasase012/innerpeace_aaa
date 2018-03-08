@@ -13,22 +13,22 @@ import java.util.List;
 import jdbc.JdbcUtil;
 
 
-public class JoinDBBean {
+public class JoinDBBeanoriginal {
 
 	//Singleton : getInstance
-		private static JoinDBBean instance = new JoinDBBean();
-		public static JoinDBBean getInstance() {
+		private static JoinDBBeanoriginal instance = new JoinDBBeanoriginal();
+		public static JoinDBBeanoriginal getInstance() {
 			return instance;
 		}
-		private JoinDBBean() {	
+		private JoinDBBeanoriginal() {	
 		}
 		
 	//Connection method
 		public static Connection getConnection(){
 			Connection conn = null;
 			try {
-				String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";	//	HOME
-				/*String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";*/  //	SIST
+				/*String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";*/	//	HOME
+				String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";  //	SIST
 				String dbId = "scott";
 				String dbPass = "tiger";
 				Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -245,30 +245,43 @@ public class JoinDBBean {
 			}	
 		}	
 	
-		//아이디 중복체크
-		public boolean confirmId(String id) {
-			boolean result = false;
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			try {
-				conn = getConnection();
-				String sql = "select id from member where id = ?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, id);
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					result=true;
-				}
-			}catch(Exception e) {
-				e.printStackTrace();
-			}finally {
-				close(conn,rs,pstmt);
-			}
-			return result;
-		}
-	    
+		/**
+	     * 아이디 중복체크를 한다.
+	     * @param id 아이디
+	     * @return x : 아이디 중복여부 확인값
+	     *//*
+	    public boolean duplicateIdCheck(String id)
+	    {
+	        Connection conn = null;
+	        PreparedStatement pstm = null;
+	        ResultSet rs = null;
+	        boolean x= false;
+	        
+	        try {
+	            // 쿼리
+	            StringBuffer query = new StringBuffer();
+	            query.append("SELECT ID FROM MEMBER WHERE ID=?");
+	                        
+	            conn = getConnection();
+	            pstm = conn.prepareStatement(query.toString());
+	            pstm.setString(1, id);
+	            rs = pstm.executeQuery();
+	            
+	            if(rs.next()) x= true; //해당 아이디 존재
+	            
+	            return x;
+	            
+	        } catch (Exception sqle) {
+	            throw new RuntimeException(sqle.getMessage());
+	        } finally {
+	            try{
+	                if ( pstm != null ){ pstm.close(); pstm=null; }
+	                if ( conn != null ){ conn.close(); conn=null;    }
+	            }catch(Exception e){
+	                throw new RuntimeException(e.getMessage());
+	            }
+	        }
+	    }*/
 		
 		//update  
 		public int updateData(JoinDataBean info) {
