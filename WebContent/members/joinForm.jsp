@@ -11,9 +11,9 @@
 	@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 	
 	body {
-		font-family: 'Jeju Gothic', sans-serif;
+		/*font-family: 'Jeju Gothic';*/
 		background-size: cover;
-		background-image: url("/innerpeace_aaa/resources/signupimg.jpg");
+		background-image: url("/innerpeace_aaa/resources/livingroom.png");
  		padding-top: 5en;
  		display: flex;
  		justify-content: center;
@@ -47,7 +47,7 @@
 <!-- signup Form -->
 <div class="w3-container w3-half" style="width:40%;">
   <ul class="w3-ul w3-hover-shadow">
-  <li class="w3-teal w3-xlarge w3-center w3-padding-32" style="color: black;">innerpeace 회원 가입</li>
+  <li class="w3-amber w3-xlarge w3-center w3-padding-32" style="color: black;">innerpeace 회원 가입</li>
 	<form class="w3-container w3-transparent" action="joinSuccess" method="post">
 		<%-- <input type="hidden" name="id" value="${info.id }">
 		<input type="hidden" name="id" value="${info.name }"> --%>
@@ -60,10 +60,10 @@
 			<label class="w3-text-white">
 			아이디 :<input class="w3-input w3-border w3-light-grey" type="text" name="id" size="20"  required="required"></label><br>
 			<label class="w3-text-white">
-			비밀번호 :<input class="w3-input w3-border  w3-light-grey"  type="password" name="pwd" size="20" required="required"></label><br>
+			비밀번호 :<input class="w3-input w3-border  w3-light-grey" type="password" name="pwd" size="20" required="required"></label><br>
 			<label class="w3-text-white">
-			비밀번호 확인 :<input class="w3-input w3-border  w3-light-grey" type="password" name="confirmPwd" size="20" onkeyup="checkPwd()" required="required"></label><br>
-			<div id="checkPwd"></div>
+			비밀번호 확인 :<input class="w3-input w3-border  w3-light-grey" type="password" name="confirmPwd" size="20" onkeyup="checkPwd()" required="required"></label>
+			<div id="checkPwd"></div><br>
 			<label class="w3-text-white">
 			성별 : <input type="radio" name="gender" value="male" required="required">남
 				 <input type="radio" name="gender" value="female" required="required">여</label><br><br>
@@ -103,9 +103,9 @@
 			
 			<p>
 			<label>
-			<input type="submit" value="작성완료"><!-- &nbsp;&nbsp; -->
-			<input type="reset" value="다시작성">
-			<input type="button" value="취소" onclick="window.location.href='/innerpeace_aaa/member/index'">
+			<input class="w3-button w3-amber w3-round" type="submit" value="작성완료"><!-- &nbsp;&nbsp; -->
+			<input class="w3-button w3-amber w3-round" type="reset" value="다시작성">
+			<input class="w3-button w3-amber w3-round" type="button" value="취소" onclick="window.location.href='/innerpeace_aaa/member/index'">
 			</label></p>
 	</ul>
 	</div>

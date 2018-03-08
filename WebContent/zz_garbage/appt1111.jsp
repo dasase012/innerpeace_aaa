@@ -4,16 +4,41 @@
 <head><title>게시판</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 
-<code class="language-javascript">jQuery('#datetimepicker_mask').datetimepicker({
- timepicker:false,
- mask:true, // '9999/19/39 29:59' - digit is the maximum possible for a cell
-});</code>
-
-
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	  $( function() {
+	    $( "#datepicker" ).datepicker();
+	  } );
+	  $( function() {
+		$( "#datepicker2" ).datepicker();
+	  } );
+	  $( function() {
+		$( "#datepicker3" ).datepicker();
+	  } );
+	  $(function(){
+		$('input.timepicker').timepicker({
+			timeFormat: 'HH:mm p',
+		    interval: 30,
+		    minTime: '9',
+		    maxTime: '8:00pm',
+		    defaultTime: '11',
+		    startTime: '9:00am',
+		    dynamic: false,
+		    dropdown: true,
+		    scrollbar: true
+		    });	
+		});
+	 
+	  
+</script>
 
 </head>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 <body>
 	<div class="w3-row w3-section">
@@ -125,13 +150,13 @@
 		</div><br>
 		<div>
 			<label>원하시는 진료 일시를 선택해 주세요.<br><span></span></label>
-			<input class="date1" id="datetimepicker_mask" name="appt_date1" type="text" required="required" value="MM/DD/YYYY " 
-			onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" >
-			<!-- <input class="timepicker timepicker-with-dropdown text-center" value="HH:mm p" /> -->
+			<input class="date1" id="datepicker" name="appt_date1" type="text" required="required" value="MM/DD/YYYY"> 
+			<!-- onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" --> >
+			<input class="timepicker timepicker-with-dropdown text-center" value="HH:mm p" />
 		</div><br>
 		<div>
 			<label>차선으로 가능한 진료 일시를 선택해 주세요.<br><span></span></label>
-			<input class="date2" id="datetimepicker2" name="appt_date2" type="text" required="required" value="MM/DD/YYYY" 
+			<input class="date2" id="datepicker2" name="appt_date2" type="text" required="required" value="MM/DD/YYYY" 
 			onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" >
 			<input class="timepicker timepicker-with-dropdown text-center" value="HH:mm p"/>
 		</div><br>		
@@ -157,9 +182,5 @@
 	<!-- footer contact admin -->
 	<%@ include file="/mainhome/footer.jsp" %>
 </body>
-<link rel="stylesheet" type="text/css" href="/jquery.datetimepicker.css"/ >
-<script src="/jquery.js"></script>
-<script src="/build/jquery.datetimepicker.full.min.js"></script>
-
 </div>
 </html>

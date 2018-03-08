@@ -21,7 +21,7 @@
 <!-- LoginForm -->
 	<div class="w3-container w3-half w3-display-middle" style="width:30%;">
 	  <ul class="w3-ul w3-hover-shadow">
-	  <li class="w3-teal w3-xlarge w3-center w3-padding-32">Login</li>
+	  <li class="w3-amber w3-xlarge w3-center w3-padding-32">Login</li>
 	<form class="w3-container w3-card-4 w3-white" action="loginPro" method="post">
 	
 	<p>
@@ -36,9 +36,9 @@
 	<label>REMEMBER MY ID</label></p>
 	
 	<p class="w3-center">
-	<button class="w3-button w3-section w3-teal w3-ripple" type="submit"> Login </button>
+	<button class="w3-button w3-section w3-amber  w3-round w3-ripple" type="submit"> Login </button>
 	
-	<button class="w3-button w3-section w3-teal w3-ripple" type="button" 
+	<button class="w3-button w3-section w3-amber w3-round w3-ripple" type="button" 
 			onclick="window.location.href='/innerpeace_aaa/member/index'"> Cancel </button></p>
 	<p>
 	<div class="text-center p-t-136" style="text-align: right;">

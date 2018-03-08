@@ -57,7 +57,7 @@
 	<!-- Enter : loginpage  -->
 		<div class="w3-container w3-center" id="enter">
 		    <form action="/innerpeace_aaa/member/loginForm" method="post">
-		    <button class="w3-button w3-yellow w3-round-large  w3-padding-large w3-xlarge w3-display-middle" 
+		    <button class="w3-button w3-amber w3-round-large  w3-padding-large w3-xlarge w3-display-middle" 
 		    		style="margin-top: 10%; "type="submit">Enter</button></form>
 		</div>
   

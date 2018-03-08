@@ -17,10 +17,10 @@
 	
 <center class="w3-card-4 w3-display-middle" style="margin-top:50px; width: 800; height: 600; margin-bottom: 50; top: 400px;"><p><h3><b><u>회원 정보</u></b></h3></p>
 <div class="container" id="info">
-	<table class="w3-table w3-bordered w3-centered" style="width:40%;">
+	<table class="w3-table w3-bordered " style="width:50%;">
 	<tr height="30">
-		<td width="125" align="center"><b>아이디</b></td>
-		<td width="125" align="center">${member.id}</td>
+		<td width="125" align="left"><b>아이디</b></td>
+		<td width="125" align="left">${member.id}</td>
 	</tr><tr height="30">	
 		<td width="125"><b>이름</b></td>
 		<td width="125">
@@ -62,12 +62,12 @@
 		
 	<tr height="30">
 		<td colspan="4"  class="w3-center">
-			<input type="submit" value="정보수정" >  
+			<input  class="w3-button w3-amber w3-round" type="submit" value="정보수정" >  
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="button" value="탈퇴" 
+			<input  class="w3-button w3-amber w3-round" type="button" value="탈퇴" 
 			onclick="document.location.href='/innerpeace_aaa/member/deleteForm?id=${member.id}&pageNum=${pageNum}'">
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="button" value="취소" 
+			<input  class="w3-button w3-amber w3-round" type="button" value="취소" 
 			onclick="document.location.href='/innerpeace_aaa/member/home'">
 	</td></tr> </table></div></center>
 	
