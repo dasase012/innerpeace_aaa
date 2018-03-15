@@ -11,8 +11,8 @@
 	<!--Requirement jQuery-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<!--Load Script and Stylesheet -->
-	<script type="text/javascript" src="jquery.simple-dtpicker.js"></script>
-	<link type="text/css" href="jquery.simple-dtpicker.css" rel="stylesheet" />
+	<script type="text/javascript" src="/innerpeace_aaa/appointment/jquery.simple-dtpicker.js"></script>
+	<link type="text/css" href="/innerpeace_aaa/appointment/jquery.simple-dtpicker.css" rel="stylesheet" />
 	<!---->
 
 
@@ -25,7 +25,10 @@
 
 	<script type="text/javascript">
 		$(function(){
-			$('*[name=date]').appendDtpicker();
+			$('*[name=appt_date1]').appendDtpicker();
+		});
+		$(function(){
+			$('*[name=appt_date2]').appendDtpicker();
 		});
 	</script> 
 
@@ -37,45 +40,43 @@
 	
 
 	<!-- body board -->
-	
 	<center>
 <div class="container" style="margin-top: 80px;">
-	<table class="w3-table-all w3-bordered" style="width: 800;">
+	<table class="w3-table-all w3-bordered" style="width:800;">
 	<tr height="30">
-		<td width="125" align="center"><b>아이디 : </b></td>
-		<td width="125" align="center">${member.id}</td>
-		<td width="125" align="center"><b>이름 : </b></td>
-		<td width="125" align="center">${member.name}</td>
+		<td width="100" align="center"><b>아이디 : </b></td>
+		<td width="100" align="center">${member.id}</td>
+		<td width="100" align="center"><b>이름 : </b></td>
+		<td width="100" align="center">${member.name}</td>
 	</tr>
 	<tr height="30">			
-		<td width="125" align="center"><b>성별 : </b></td>
-		<td width="125" >${member.gender}</td>
-		<td width="125" align="center"><b>생년월일 : </b></td>
-		<td width="125" align="center">${member.birthdate}</td>
+		<td width="100" align="center"><b>성별 : </b></td>
+		<td width="100" >${member.gender}</td>
+		<td width="100" align="center"><b>생년월일 : </b></td>
+		<td width="100" align="center">${member.birthdate}</td>
 	</tr><tr height="30">		
-		<td width="125"><b>기본연락처 : </b></td>
-		<td width="125">${member.tel}</td>
-		<td width="125"><b>이메일 : </b></td>
-		<td width="125">${member.email}</td>
+		<td width="100"><b>기본연락처 : </b></td>
+		<td width="100">${member.tel}</td>
+		<td width="100"><b>이메일 : </b></td>
+		<td width="100">${member.email}</td>
  	</tr><tr height="30">
-		<td width="125"><b>과거 진료경험 여부 :  </b></td>
-		<td width="125" align="center">${member.con_past}</td>
-			<td width="125"><b>가장 최근 진료일 : </b></td>
-			<td width="125" align="center">${member.con_date}</td>
+		<td width="100"><b>과거 진료경험 여부 :  </b></td>
+		<td width="100" align="center">${member.con_past}</td>
+			<td width="100"><b>가장 최근 진료일 : </b></td>
+			<td width="100" align="center">${member.con_date}</td>
 	</tr><tr height="30">
-			<td width="125"><b>과거 진료과목 : </b></td>
-			<td width="125" align="center">${member.con_cat}</td>
-			<td width="125" align="center"/>
-			<td width="125" align="center"/>			
+			<td width="100"><b>과거 진료과목 : </b></td>
+			<td width="100" align="center">${member.con_cat}</td>
+			<td width="100" align="center"/>
+			<td width="100" align="center"/>			
 	</tr>
 		
 	</table></div>
 	
 	<!-- input form -->
-	<!-- <form class="w3-container w3-card-4 w3-white w3-text-black" action="apptPro" method="post"
-	style="height: 80%; width:50%; margin-top: 10px; padding: 10;"> -->
-	
-	<form class="w3-container w3-card-4 w3-white w3-text-black" action="apptPro" method="post" style="/* height: 100%; */margin-top:50px; width: 800; height: 750; margin-bottom: 50; top: 400px;">
+	<!-- <form class="w3-container w3-display-topmiddle w3-card-4 w3-white w3-text-black" action="apptPro" method="post"
+	style="height: 100%; width:600px; margin-top: 340px; padding: 10;"> -->
+	<form class="w3-container w3-card-4 w3-white w3-text-black" action="apptPro" method="post" style="/* height: 100%; */margin-top:50px; width: 800; height: 700; margin-bottom: 50; top: 400px;">
 	<div class="w3-row w3-section">
 		<input type="hidden" name="num" value="${num}">
 		<input type="hidden" name="id" value="${member.id}">
@@ -86,12 +87,12 @@
 			<input class="w3-input w3-hover-grey" style="width: 50%;" type="text" name="tel2" >
 		</div>
 		
-		<br>
+		
 		<div>
-			<label ">선택하신 기관에서의 진료이력: </label><span></span>
+			<label>선택하신 기관에서의 진료이력 </label><span></span>
 			<input type="radio" name="con_past" value="초진">초진
 			<input type="radio" name="con_past" value="재진">재진
-		</div><br>
+		</div>
 		<div>
 	
 			<select id="category1" class="w3-select" name="con_cat" style="width: 50%;" >
@@ -116,7 +117,7 @@
 				<option value="성폭력,왕따 후유증">성폭력 피해 후유증,왕따 후유증</option>
 			</select>
 			<span></span>
-		</div><br>
+		</div>
 		<div>
 			<select id="category2" class="w3-select" name="doc" style="width: 50%;" >
 				<option value="">병원을 등록된 리스트에서 골라주세요*</option>
@@ -143,15 +144,10 @@
 		</div><br>
 		<div>
 			<label>원하시는 진료 일시를 선택해 주세요.<br><span></span></label>
-			<!-- <input class="date1" id="datetimepicker_mask" name="appt_date1" type="text" required="required" value="MM/DD/YYYY " 
-			onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" > -->
 			<input type="text" name="appt_date1" value="YY/MM/DD h:m">
 		</div><br>
 		<div>
 			<label>차선으로 가능한 진료 일시를 선택해 주세요.<br><span></span></label>
-			<!-- <input class="date2" id="datetimepicker2" name="appt_date2" type="text" required="required" value="MM/DD/YYYY" 
-			onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" >
-			<input class="timepicker timepicker-with-dropdown text-center" value="HH:mm p"/> -->
 			<input type="text" name="appt_date2" value="YY/MM/DD h:m">
 			
 		</div><br>		
@@ -170,8 +166,9 @@
 			<textarea style="height: 10%; width: 40%;" name="text"></textarea>
 			<span></span>
 		<br><br>
-		<input type="submit" name="submit" value="예약하기"></div>
+		<input class="w3-amber w3-round w3-button" type="submit" name="submit" value="예약하기"></div>
 	</div></form>	
+	
 	</center>
 	
 	<!-- footer contact admin -->
