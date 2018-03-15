@@ -29,7 +29,7 @@
 
 
 	<p class="w3-left" style="padding-left: 30px"></p>
-<div class="w3-container" style="margin-top: 80px; width: 1000px;">
+<div class="w3-container" style="margin-top: 80px;">
 <!-- <p class="w3-right w3-padding-right-large">
 	<a href="/innerpeace_aaa/member/home">메인페이지로 가기</a></p> -->
 	
@@ -40,15 +40,14 @@
 	</table>
 	</c:if>
 	<c:if test="${count!=0}">
-	<table class="w3-table-all" width="60%" style="margin-left:45%;">
-		<h3 style=" margin-top: 30px; margin-left: 90%;"><b><u>My 예약</u></b></h3>
-		<tr class="w3-amber">
+	<table class="w3-table-all" width="60%">
+		<tr class="w3-white">
 		<!-- <td align="center" width="50">번호</td> -->
-		<td align="center" width="100"><b>상담과목</b></td>
-		<td align="center" width="100"><b>담당병원</b></td>
-		<td align="center" width="60"><b>진료예약일1</b></td>
-		<td align="center" width="60"><b>진료예약일2</b></td>
-		<td align="center" width="30"><b>예약관리</b></td>
+		<td align="center" width="50">상담과목</td>
+		<td align="center" width="50">담당의료진</td>
+		<td align="center" width="100">진료예약일1</td>
+		<td align="center" width="100">진료예약일2</td>
+		<td align="center" width="50">예약관리</td>
 	
 	<c:forEach var="records" items="${apptList}">
 		<tr height="30">
